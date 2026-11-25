@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
+  <style>
+    .ova-juego-ficha {
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      border-width: 2px;
+    }
+    .ova-juego-ficha:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+    .ova-juego-ficha.is-seleccionada {
+      border-color: var(--bs-primary);
+      background-color: rgba(13, 110, 253, 0.08);
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.2);
+    }
+    .ova-juego-ficha.is-emparejada {
+      border-color: var(--bs-success);
+      background-color: rgba(25, 135, 84, 0.1);
+      color: var(--bs-success-text-emphasis);
+      opacity: 0.9;
+    }
+    .ova-pista-caja {
+      background-color: #f8fafc;
+      border-left: 4px solid #0f4c5c;
+    }
+  </style>
+</head>
+<body data-page="juegos">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="./index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="./index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="./retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="./evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="./creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="./unidades/unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Actividad transversal · Aprendizaje lúdico</p>
+        <h1>Juegos interactivos de redes TCP/IP</h1>
+        <p class="lead mb-0">Refuerza tu dominio sobre encabezados IPv4/IPv6, arquitectura de routers, diagnóstico ICMP y protocolos de enrutamiento con estas dos dinámicas rápidas.</p>
+      </header>
+
+      <!-- JUEGO 1: Emparejamiento técnico -->
+      <section class="card ova-card mb-4" aria-labelledby="juego1-titulo">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <span><i class="bi bi-puzzle me-1" aria-hidden="true"></i> Juego 1 · Conexión de conceptos y protocolos</span>
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge text-bg-primary" id="j1-marcador">Parejas: 0 / 8</span>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="j1-reiniciar">Mezclar de nuevo</button>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="juego1-titulo">Empareja cada función o comportamiento con su elemento técnico</h2>
+          <p class="mb-3">Selecciona primero una descripción de la <strong>columna izquierda</strong> y luego haz clic en el término correspondiente de la <strong>columna derecha</strong>.</p>
+
+          <div class="row g-3">
+            <div class="col-md-7">
+              <p class="small text-uppercase fw-semibold text-muted mb-2">1. Descripción técnica</p>
+              <div class="d-grid gap-2" id="j1-columna-izq" role="group" aria-label="Descripciones técnicas"></div>
+            </div>
+            <div class="col-md-5">
+              <p class="small text-uppercase fw-semibold text-muted mb-2">2. Protocolo, campo o fenómeno</p>
+              <div class="d-grid gap-2" id="j1-columna-der" role="group" aria-label="Términos técnicos"></div>
+            </div>
+          </div>
+
+          <div class="mt-3" id="j1-feedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- JUEGO 2: Clasificador rápido de pistas -->
+      <section class="card ova-card mb-4" aria-labelledby="juego2-titulo">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <span><i class="bi bi-lightning-charge me-1" aria-hidden="true"></i> Juego 2 · Clasificador de cabeceras y rutas</span>
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge text-bg-dark" id="j2-ronda">Tarjeta 1 / 10</span>
+            <span class="badge text-bg-success" id="j2-puntos">Aciertos: 0</span>
+            <span class="badge text-bg-warning text-dark" id="j2-racha">Racha: 0</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="juego2-titulo">¿A qué dominio pertenece cada pista de red?</h2>
+          <p>Lee el fragmento técnico extraído de una captura de tráfico o tabla de router y clasifícalo en la categoría correcta:</p>
+
+          <div id="j2-tablero">
+            <div class="p-4 rounded ova-pista-caja mb-3">
+              <p class="small text-uppercase fw-semibold text-muted mb-1">Pista técnica observada:</p>
+              <p class="fs-5 fw-semibold mb-0" id="j2-pista-texto"></p>
+            </div>
+
+            <div class="row g-2 mb-3" id="j2-botones">
+              <div class="col-md-4 d-grid">
+                <button type="button" class="btn btn-outline-primary py-2 fw-semibold" data-cat="ipv4">
+                  <i class="bi bi-4-square me-1" aria-hidden="true"></i> Exclusivo de IPv4
+                </button>
+              </div>
+              <div class="col-md-4 d-grid">
+                <button type="button" class="btn btn-outline-primary py-2 fw-semibold" data-cat="ipv6">
+                  <i class="bi bi-6-square me-1" aria-hidden="true"></i> Exclusivo de IPv6
+                </button>
+              </div>
+              <div class="col-md-4 d-grid">
+                <button type="button" class="btn btn-outline-primary py-2 fw-semibold" data-cat="enrutamiento">
+                  <i class="bi bi-diagram-3 me-1" aria-hidden="true"></i> Enrutamiento (RIP / OSPF / BGP)
+                </button>
+              </div>
+            </div>
+
+            <div id="j2-feedback" aria-live="polite"></div>
+
+            <div class="mt-3 d-flex justify-content-end">
+              <button type="button" class="btn ova-btn-confirmar d-none" id="j2-siguiente">
+                Siguiente tarjeta <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre secciones">
+        <a class="btn btn-outline-secondary" href="./retos.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver a Retos</a>
+        <a class="btn ova-btn-confirmar" href="./evaluacion.html">Ir a Evaluación final <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="./index.html">Inicio</a>
+        <a href="./retos.html">Retos</a>
+        <a href="./juegos.html">Juegos</a>
+        <a href="./evaluacion.html">Evaluación</a>
+        <a href="./creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/app.js"></script>
+  <script>
+    (function () {
+      function barajar(lista) {
+        const copia = lista.slice();
+        for (let i = copia.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = copia[i];
+          copia[i] = copia[j];
+          copia[j] = temp;
+        }
+        return copia;
+      }
+
+      /* =========================================================
+         JUEGO 1: EMPAREJAMIENTO TÉCNICO
+         ========================================================= */
+      const PARES_J1 = [
+        {
+          id: 'ttl',
+          desc: 'Contador de 8 bits que se decrementa en cada router para evitar bucles infinitos.',
+          termino: 'TTL / Hop Limit'
+        },
+        {
+          id: 'hol',
+          desc: 'Un paquete retenido al frente de una cola de entrada bloquea a otros paquetes detrás que van a salidas libres.',
+          termino: 'Bloqueo HOL (Head-of-Line)'
+        },
+        {
+          id: 'ipv6',
+          desc: 'Cabecera fija de 40 bytes que elimina el checksum de red y utiliza direcciones de 128 bits.',
+          termino: 'Protocolo IPv6'
+        },
+        {
+          id: 'icmp',
+          desc: 'Mensaje Echo Request (Tipo 8) y Echo Reply (Tipo 0) empleado para medir RTT con Ping.',
+          termino: 'Diagnóstico ICMP'
+        },
+        {
+          id: 'tunel',
+          desc: 'Encapsula un datagrama IPv6 íntegro dentro de un paquete IPv4 (Protocolo 41) para cruzar redes IPv4.',
+          termino: 'Tunelización (Tunneling)'
+        },
+        {
+          id: 'dijkstra',
+          desc: 'Algoritmo de estado de enlace que calcula el árbol de caminos más cortos sobre una LSDB completa.',
+          termino: 'Algoritmo de Dijkstra (SPF)'
+        },
+        {
+          id: 'rip',
+          desc: 'Protocolo IGP de vector de distancia limitado a 15 saltos que envía rutas sobre UDP puerto 520.',
+          termino: 'RIPv2'
+        },
+        {
+          id: 'bgp',
+          desc: 'Protocolo EGP de vector de rutas sobre TCP puerto 179 que usa el atributo AS-PATH entre Sistemas Autónomos.',
+          termino: 'BGP-4'
+        }
+      ];
+
+      let izqSeleccionada = null;
+      let derSeleccionada = null;
+      let emparejados = new Set();
+
+      const contIzq = document.getElementById('j1-columna-izq');
+      const contDer = document.getElementById('j1-columna-der');
+      const fbJ1 = document.getElementById('j1-feedback');
+      const marcadorJ1 = document.getElementById('j1-marcador');
+
+      function renderJuego1() {
+        izqSeleccionada = null;
+        derSeleccionada = null;
+        emparejados = new Set();
+        fbJ1.innerHTML = '';
+        actualizarMarcadorJ1();
+
+        const izqMezclada = barajar(PARES_J1);
+        const derMezclada = barajar(PARES_J1);
+
+        contIzq.innerHTML = izqMezclada.map(function (item) {
+          return (
+            '<button type="button" class="btn btn-outline-secondary ova-juego-ficha p-2" data-lado="izq" data-id="' +
+            item.id + '">' + item.desc + '</button>'
+          );
+        }).join('');
+
+        contDer.innerHTML = derMezclada.map(function (item) {
+          return (
+            '<button type="button" class="btn btn-outline-secondary ova-juego-ficha p-2 fw-semibold" data-lado="der" data-id="' +
+            item.id + '">' + item.termino + '</button>'
+          );
+        }).join('');
+      }
+
+      function actualizarMarcadorJ1() {
+        marcadorJ1.textContent = 'Parejas: ' + emparejados.size + ' / ' + PARES_J1.length;
+      }
+
+      function limpiarSeleccionVisual() {
+        document.querySelectorAll('#j1-columna-izq .ova-juego-ficha, #j1-columna-der .ova-juego-ficha').forEach(function (btn) {
+          btn.classList.remove('is-seleccionada');
+        });
+      }
+
+      function manejarClicJuego1(e) {
+        const btn = e.target.closest('.ova-juego-ficha');
+        if (!btn || btn.disabled) return;
+
+        const lado = btn.getAttribute('data-lado');
+        const id = btn.getAttribute('data-id');
+
+        if (lado === 'izq') {
+          izqSeleccionada = id;
+        } else {
+          derSeleccionada = id;
+        }
+
+        limpiarSeleccionVisual();
+        if (izqSeleccionada) {
+          const bIzq = contIzq.querySelector('[data-id="' + izqSeleccionada + '"]');
+          if (bIzq) bIzq.classList.add('is-seleccionada');
+        }
+        if (derSeleccionada) {
+          const bDer = contDer.querySelector('[data-id="' + derSeleccionada + '"]');
+          if (bDer) bDer.classList.add('is-seleccionada');
+        }
+
+        if (izqSeleccionada && derSeleccionada) {
+          if (izqSeleccionada === derSeleccionada) {
+            emparejados.add(izqSeleccionada);
+            const b1 = contIzq.querySelector('[data-id="' + izqSeleccionada + '"]');
+            const b2 = contDer.querySelector('[data-id="' + derSeleccionada + '"]');
+            [b1, b2].forEach(function (el) {
+              el.classList.remove('is-seleccionada', 'btn-outline-secondary');
+              el.classList.add('is-emparejada');
+              el.disabled = true;
+            });
+            actualizarMarcadorJ1();
+
+            if (emparejados.size === PARES_J1.length) {
+              fbJ1.innerHTML = '<div class="alert alert-success mb-0" role="alert"><strong>¡Tablero completado!</strong> Has conectado correctamente los 8 conceptos fundamentales de la capa de Internet.</div>';
+            } else {
+              fbJ1.innerHTML = '<div class="alert alert-success py-2 mb-0" role="alert"><i class="bi bi-check-circle me-1" aria-hidden="true"></i> ¡Pareja correcta! Continúa con la siguiente.</div>';
+            }
+          } else {
+            fbJ1.innerHTML = '<div class="alert alert-warning py-2 mb-0" role="alert"><i class="bi bi-exclamation-triangle me-1" aria-hidden="true"></i> Esa combinación no coincide. Revisa la descripción e inténtalo de nuevo.</div>';
+          }
+          izqSeleccionada = null;
+          derSeleccionada = null;
+          setTimeout(limpiarSeleccionVisual, 350);
+        }
+      }
+
+      contIzq.addEventListener('click', manejarClicJuego1);
+      contDer.addEventListener('click', manejarClicJuego1);
+      document.getElementById('j1-reiniciar').addEventListener('click', renderJuego1);
+      renderJuego1();
+
+      /* =========================================================
+         JUEGO 2: CLASIFICADOR DE CABECERAS Y RUTAS
+         ========================================================= */
+      const TARJETAS_J2 = [
+        {
+          pista: 'Cabecera con campo IHL = 5 (20 bytes) y suma de comprobación de 16 bits recalculada en cada router.',
+          cat: 'ipv4',
+          explicacion: 'Exclusivo de IPv4: IPv6 tiene cabecera fija de 40 bytes sin campo IHL ni checksum de cabecera.'
+        },
+        {
+          pista: 'Dirección link-local fe80::1a2b:3c4d:5e6f:7080 asignada automáticamente en la interfaz.',
+          cat: 'ipv6',
+          explicacion: 'Exclusivo de IPv6: el prefijo fe80::/10 identifica direcciones unicast de enlace local de 128 bits.'
+        },
+        {
+          pista: 'Atributo AS-PATH: 65020 65014 65001 utilizado para seleccionar políticas y evitar bucles.',
+          cat: 'enrutamiento',
+          explicacion: 'Enrutamiento: el atributo AS-PATH pertenece al protocolo BGP-4 para interconectar Sistemas Autónomos.'
+        },
+        {
+          pista: 'Fragmentación realizada por un router intermedio al reenviar un paquete hacia un enlace con MTU menor.',
+          cat: 'ipv4',
+          explicacion: 'Exclusivo de IPv4: en IPv6 los routers intermedios nunca fragmentan; solo lo hace el host origen.'
+        },
+        {
+          pista: 'Campo Siguiente Cabecera (Next Header = 58) seguido por un mensaje ICMPv6 Neighbor Solicitation.',
+          cat: 'ipv6',
+          explicacion: 'Exclusivo de IPv6: Next Header = 58 identifica ICMPv6, que reemplaza a ARP mediante Neighbor Discovery.'
+        },
+        {
+          pista: 'Inundación de anuncios LSA para construir la base de datos topológica del Área 0 (Backbone).',
+          cat: 'enrutamiento',
+          explicacion: 'Enrutamiento: corresponde al protocolo OSPF, que organiza las redes jerárquicamente alrededor del Área 0.'
+        },
+        {
+          pista: 'Dirección de difusión 192.168.10.255 destinada a todos los hosts de una subred /24.',
+          cat: 'ipv4',
+          explicacion: 'Exclusivo de IPv4: IPv6 eliminó las direcciones broadcast y las sustituyó por grupos multicast.'
+        },
+        {
+          pista: 'Campo Etiqueta de Flujo (Flow Label) de 20 bits en la primera palabra de la cabecera.',
+          cat: 'ipv6',
+          explicacion: 'Exclusivo de IPv6: permite identificar flujos de paquetes sin necesidad de inspeccionar puertos de transporte.'
+        },
+        {
+          pista: 'Actualización periódica cada 30 segundos hacia 224.0.0.9 (UDP puerto 520) con métrica en saltos.',
+          cat: 'enrutamiento',
+          explicacion: 'Enrutamiento: describe exactamente el intercambio periódico de vectores de distancia en RIPv2.'
+        },
+        {
+          pista: 'Bloque de direcciones privadas 172.16.0.0/12 definido en el RFC 1918.',
+          cat: 'ipv4',
+          explicacion: 'Exclusivo de IPv4: los bloques privados RFC 1918 (10/8, 172.16/12 y 192.168/16) son propios de IPv4.'
+        }
+      ];
+
+      let mazoJ2 = [];
+      let indiceJ2 = 0;
+      let aciertosJ2 = 0;
+      let rachaJ2 = 0;
+      let respondidaJ2 = false;
+
+      const elRonda = document.getElementById('j2-ronda');
+      const elPuntos = document.getElementById('j2-puntos');
+      const elRacha = document.getElementById('j2-racha');
+      const elPista = document.getElementById('j2-pista-texto');
+      const elFbJ2 = document.getElementById('j2-feedback');
+      const btnSigJ2 = document.getElementById('j2-siguiente');
+      const contBotonesJ2 = document.getElementById('j2-botones');
+
+      function iniciarJuego2() {
+        mazoJ2 = barajar(TARJETAS_J2);
+        indiceJ2 = 0;
+        aciertosJ2 = 0;
+        rachaJ2 = 0;
+        mostrarTarjetaJ2();
+      }
+
+      function mostrarTarjetaJ2() {
+        respondidaJ2 = false;
+        elFbJ2.innerHTML = '';
+        btnSigJ2.classList.add('d-none');
+        elRonda.textContent = 'Tarjeta ' + (indiceJ2 + 1) + ' / ' + mazoJ2.length;
+        elPuntos.textContent = 'Aciertos: ' + aciertosJ2;
+        elRacha.textContent = 'Racha: ' + rachaJ2;
+        elPista.textContent = mazoJ2[indiceJ2].pista;
+
+        contBotonesJ2.querySelectorAll('button').forEach(function (b) {
+          b.disabled = false;
+          b.className = 'btn btn-outline-primary py-2 fw-semibold';
+        });
+      }
+
+      contBotonesJ2.addEventListener('click', function (e) {
+        const btn = e.target.closest('button[data-cat]');
+        if (!btn || respondidaJ2) return;
+
+        respondidaJ2 = true;
+        const elegida = btn.getAttribute('data-cat');
+        const actual = mazoJ2[indiceJ2];
+        const esCorrecta = elegida === actual.cat;
+
+        contBotonesJ2.querySelectorAll('button').forEach(function (b) {
+          b.disabled = true;
+          const catBtn = b.getAttribute('data-cat');
+          if (catBtn === actual.cat) {
+            b.className = 'btn btn-success py-2 fw-semibold';
+          } else if (catBtn === elegida && !esCorrecta) {
+            b.className = 'btn btn-danger py-2 fw-semibold';
+          }
+        });
+
+        if (esCorrecta) {
+          aciertosJ2++;
+          rachaJ2++;
+          elFbJ2.innerHTML = '<div class="alert alert-success mb-0" role="alert"><strong>¡Correcto!</strong> ' + actual.explicacion + '</div>';
+        } else {
+          rachaJ2 = 0;
+          elFbJ2.innerHTML = '<div class="alert alert-warning mb-0" role="alert"><strong>No exactamente.</strong> ' + actual.explicacion + '</div>';
+        }
+
+        elPuntos.textContent = 'Aciertos: ' + aciertosJ2;
+        elRacha.textContent = 'Racha: ' + rachaJ2;
+
+        if (indiceJ2 < mazoJ2.length - 1) {
+          btnSigJ2.innerHTML = 'Siguiente tarjeta <i class="bi bi-arrow-right" aria-hidden="true"></i>';
+        } else {
+          btnSigJ2.innerHTML = 'Ver resultado final <i class="bi bi-trophy" aria-hidden="true"></i>';
+        }
+        btnSigJ2.classList.remove('d-none');
+      });
+
+      btnSigJ2.addEventListener('click', function () {
+        if (indiceJ2 < mazoJ2.length - 1) {
+          indiceJ2++;
+          mostrarTarjetaJ2();
+        } else {
+          elPista.textContent = '¡Ronda completada! Obtuviste ' + aciertosJ2 + ' de ' + mazoJ2.length + ' aciertos.';
+          elFbJ2.innerHTML =
+            '<div class="alert alert-info d-flex flex-wrap justify-content-between align-items-center gap-2 mb-0" role="alert">' +
+            '<span>Has finalizado el clasificador de cabeceras y protocolos de enrutamiento.</span>' +
+            '<button type="button" class="btn btn-sm ova-btn-confirmar" id="j2-reiniciar-final">Jugar otra partida</button>' +
+            '</div>';
+          btnSigJ2.classList.add('d-none');
+          document.getElementById('j2-reiniciar-final').addEventListener('click', iniciarJuego2);
+        }
+      });
+
+      iniciarJuego2();
+    })();
+  </script>
+</body>
+</html>
