@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
+</head>
+
+<body data-page="inicio">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="./index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva"
+          aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="./index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="./retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="./evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="./creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0"
+            aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="./unidades/unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-hero">
+        <p class="ova-kicker">Universidad de Córdoba · Ingeniería de Sistemas · Telemática</p>
+        <h1>Capa de Internet del modelo TCP/IP</h1>
+        <p class="ova-hero-docente">Docente: Richard Crawford V.</p>
+        <p class="ova-presentacion lead mb-0">Este Objeto Virtual de Aprendizaje (OVA) guía de forma estructurada e
+          interactiva el estudio de la capa de Internet en la arquitectura TCP/IP: desde la encapsulación en datagramas
+          y la arquitectura interna de los routers, hasta el contraste entre IPv4 e IPv6, los mensajes de diagnóstico
+          ICMP y los protocolos de enrutamiento RIP, OSPF y BGP.</p>
+      </header>
+
+      <section aria-labelledby="objetivos-titulo">
+        <h2 id="objetivos-titulo">Objetivos de aprendizaje</h2>
+        <p class="ova-objetivo-general"><strong>Objetivo general.</strong> Facilitar la comprensión y aplicación de los
+          conceptos, protocolos y mecanismos de funcionamiento de la capa de Internet del modelo TCP/IP mediante
+          recursos digitales interactivos, actividades prácticas y estrategias de autoevaluación.</p>
+        <ol class="ova-objetivos">
+          <li>Comprender las funciones, encapsulación y direccionamiento lógico de la capa de Internet dentro del modelo
+            TCP/IP, diferenciando las redes de datagramas de las de circuitos virtuales.</li>
+          <li>Analizar la arquitectura básica de un router y los principios de procesamiento, conmutación, colas y
+            reenvío de paquetes.</li>
+          <li>Contrastar la estructura de encabezados, direccionamiento y transición entre IPv4 e IPv6, junto con los
+            mensajes de control y diagnóstico de ICMP (Ping y Traceroute).</li>
+          <li>Diferenciar el enrutamiento estático y dinámico, los algoritmos de estado de enlace y vector de distancia,
+            y los protocolos RIP, OSPF y BGP en sistemas autónomos.</li>
+        </ol>
+      </section>
+
+      <section class="mt-4" aria-labelledby="mapa-titulo">
+        <h2 id="mapa-titulo">Mapa del OVA</h2>
+        <div class="row g-3">
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad1.html" data-unidad="unidad1">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">01</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>Funciones, encapsulación y datagramas</h3>
+                <p>Capa de Internet, direccionamiento lógico y datagramas frente a circuitos virtuales.</p>
+                <p class="ova-unidad-autor">Jose Alcázar</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad2.html" data-unidad="unidad2">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">02</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>Router, colas y reenvío</h3>
+                <p>Arquitectura básica, procesamiento, conmutación, colas y reenvío de paquetes.</p>
+                <p class="ova-unidad-autor">Jose Alcázar</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad3.html" data-unidad="unidad3">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">03</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>IPv4: encabezado y direccionamiento</h3>
+                <p>Estructura de la cabecera IPv4 y direccionamiento lógico.</p>
+                <p class="ova-unidad-autor">Elizabeth Borja</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad4.html" data-unidad="unidad4">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">04</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>IPv6, transición e ICMP</h3>
+                <p>Contraste con IPv4, transición y mensajes de control: Ping y Traceroute.</p>
+                <p class="ova-unidad-autor">Elizabeth Borja</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad5.html" data-unidad="unidad5">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">05</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>Enrutamiento y algoritmos</h3>
+                <p>Enrutamiento estático y dinámico, estado de enlace y vector de distancia.</p>
+                <p class="ova-unidad-autor">Isaias Llorente</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4">
+            <a class="ova-unidad card h-100" href="./unidades/unidad6.html" data-unidad="unidad6">
+              <div class="card-body">
+                <div class="ova-unidad-top">
+                  <span class="ova-unidad-num">06</span>
+                  <span class="ova-badge ova-badge-pendiente">Sin visitar</span>
+                  <span class="ova-badge ova-badge-visitada">Visitada</span>
+                  <span class="ova-badge ova-badge-completada">Completada</span>
+                </div>
+                <h3>RIP, OSPF y BGP</h3>
+                <p>Protocolos de enrutamiento en sistemas autónomos.</p>
+                <p class="ova-unidad-autor">Isaias Llorente</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row g-3 mt-1">
+          <div class="col-md-4">
+            <a class="ova-unidad card h-100" href="./retos.html">
+              <div class="card-body">
+                <p class="ova-unidad-autor mb-1"><i class="bi bi-puzzle" aria-hidden="true"></i> Práctica guiada</p>
+                <h3>Retos interactivos</h3>
+                <p class="mb-0">Casos aplicados de direccionamiento, encapsulación y tablas de rutas.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="ova-unidad card h-100" href="./juegos.html">
+              <div class="card-body">
+                <p class="ova-unidad-autor mb-1"><i class="bi bi-controller" aria-hidden="true"></i> Aprendizaje lúdico
+                </p>
+                <h3>Juegos de redes</h3>
+                <p class="mb-0">Dinámicas de clasificación de protocolos, encabezados y diagnóstico.</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4">
+            <a class="ova-unidad card h-100" href="./evaluacion.html">
+              <div class="card-body">
+                <p class="ova-unidad-autor mb-1"><i class="bi bi-clipboard-check" aria-hidden="true"></i> Cierre del
+                  módulo</p>
+                <h3>Evaluación final</h3>
+                <p class="mb-0">Cuestionario integrador con retroalimentación inmediata por pregunta.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-4" aria-labelledby="equipo-titulo">
+        <h2 id="equipo-titulo">Equipo</h2>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <article class="card ova-integrante h-100">
+              <div class="card-body">
+                <p class="ova-integrante-rol">Unidades 1 y 2</p>
+                <h3>Jose Alcázar</h3>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card ova-integrante h-100">
+              <div class="card-body">
+                <p class="ova-integrante-rol">Unidades 3 y 4</p>
+                <h3>Elizabeth Borja</h3>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="card ova-integrante h-100">
+              <div class="card-body">
+                <p class="ova-integrante-rol">Unidades 5 y 6</p>
+                <h3>Isaias Llorente</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-4" aria-labelledby="como-usar">
+        <h2 id="como-usar">Uso autónomo</h2>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <article class="ova-instruccion">
+              <h3>En este computador</h3>
+              <p class="mb-0">Abrir <code>index.html</code> directamente en el navegador. El OVA funciona de forma
+                autónoma sin necesidad de instalar ni iniciar un servidor propio.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="ova-instruccion">
+              <h3>En GitHub Pages</h3>
+              <p class="mb-0">Publicar el repositorio y acceder mediante la URL del sitio. Todas las rutas internas son
+                relativas y el progreso del estudiante se conserva localmente en el navegador.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura
+        Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="./index.html">Inicio</a>
+        <a href="./retos.html">Retos</a>
+        <a href="./juegos.html">Juegos</a>
+        <a href="./unidades/laboratorios.html">Laboratorios</a>
+        <a href="./evaluacion.html">Evaluación</a>
+        <a href="./creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+
+</html>
