@@ -1,0 +1,1154 @@
+/* OVA · Capa de Internet del modelo TCP/IP
+   Telemática · Ingeniería de Sistemas · Universidad de Córdoba
+   Capa visual sobre Bootstrap 5.3 y Bootstrap Icons. Sin otras dependencias.
+   Cargar este archivo después del CSS de Bootstrap. */
+
+:root {
+  --ova-petrol: #5b21b6;
+  --ova-petrol-deep: #2e1065;
+  --ova-petrol-soft: #f1eafe;
+  --ova-cyan: #6d28d9;
+  --ova-cyan-bright: #7c3aed;
+  --ova-indigo: #a21caf;
+  --ova-indigo-soft: #fdf4ff;
+  --ova-bg: #efe7fd;
+  --ova-surface: #ffffff;
+  --ova-text: #1e1433;
+  --ova-text-muted: #52476b;
+  --ova-line: #ddd3f0;
+  --ova-link: #6d28d9;
+  --ova-ok: #0e6b3c;
+  --ova-ok-bg: #e7f6ee;
+  --ova-ok-line: #8fcbab;
+  --ova-bad: #9f1d1d;
+  --ova-bad-bg: #fdecec;
+  --ova-bad-line: #f0b4b4;
+  --ova-warn: #8a5a00;
+  --ova-warn-bg: #fff6e5;
+  --ova-focus: #7c3aed;
+  --ova-radius: 0.75rem;
+  --ova-shadow: 0 8px 24px rgba(46, 16, 101, 0.08);
+  --bs-primary: #5b21b6;
+  --bs-primary-rgb: 91, 33, 182;
+  --bs-link-color: #6d28d9;
+  --bs-link-hover-color: #5b21b6;
+  --bs-success: #0e6b3c;
+  --bs-success-rgb: 14, 107, 60;
+  --bs-danger: #9f1d1d;
+  --bs-danger-rgb: 159, 29, 29;
+  --bs-body-bg: #efe7fd;
+  --bs-body-color: #1e1433;
+  --bs-secondary-color: #52476b;
+  --bs-border-color: #ddd3f0;
+  --bs-body-font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --bs-body-font-size: 1.0625rem;
+  --bs-body-line-height: 1.65;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--ova-bg);
+  color: var(--ova-text);
+  font-family: var(--bs-body-font-family);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.25;
+  color: var(--ova-petrol);
+}
+
+a {
+  color: var(--ova-link);
+}
+
+a:hover {
+  color: var(--ova-petrol);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ova-focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #e4d4ff;
+  color: var(--ova-petrol-deep);
+}
+
+code {
+  color: var(--ova-petrol);
+  background: var(--ova-petrol-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 0.3rem;
+}
+
+#contenido,
+.ova-main h2,
+.ova-main h3 {
+  scroll-margin-top: 7.5rem;
+}
+
+.ova-main {
+  padding-top: 1.5rem;
+  padding-bottom: 2.75rem;
+}
+
+.ova-main h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.ova-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--ova-cyan);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- Barra superior y recorrido ---------- */
+
+.ova-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 8px 20px rgba(46, 16, 101, 0.12);
+}
+
+.ova-navbar {
+  background: var(--ova-petrol);
+  --bs-navbar-color: #f3ecff;
+  --bs-navbar-hover-color: #ffffff;
+  --bs-navbar-active-color: #ffffff;
+  --bs-navbar-brand-color: #ffffff;
+  --bs-navbar-brand-hover-color: #ffffff;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.55);
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.ova-navbar .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.ova-navbar .navbar-brand .bi {
+  font-size: 1.45rem;
+  color: #fcd34d;
+}
+
+.ova-brand-titulo {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.ova-brand-sub {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #d9c8fb;
+}
+
+.ova-navbar .navbar-nav {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  row-gap: 0.15rem;
+}
+
+.ova-navbar .nav-link {
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f3ecff;
+}
+
+.ova-navbar .nav-link:hover,
+.ova-navbar .nav-link:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ova-navbar .nav-link.active,
+.ova-navbar .nav-link[aria-current="page"] {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 -3px 0 #fcd34d;
+}
+
+.ova-nav-progreso {
+  background: #f6f0ff;
+  border-bottom: 1px solid var(--ova-line);
+  color: var(--ova-text);
+}
+
+.ova-nav-progreso-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.9rem;
+  padding: 0.45rem 0;
+}
+
+.ova-nav-progreso-texto {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ova-petrol);
+  white-space: nowrap;
+}
+
+.ova-progreso {
+  height: 0.55rem;
+  background: #e5dcf5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ova-nav-progreso .ova-progreso {
+  flex: 1 1 10rem;
+  min-width: 8rem;
+}
+
+.ova-progreso .progress-bar {
+  background: linear-gradient(90deg, var(--ova-petrol), var(--ova-cyan-bright));
+}
+
+.ova-hops {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ova-hop {
+  display: inline-grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--ova-line);
+  background: #ffffff;
+  color: var(--ova-petrol);
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.ova-hop:hover {
+  border-color: var(--ova-cyan);
+  color: var(--ova-petrol);
+}
+
+.ova-hop.is-visitada {
+  background: var(--ova-petrol-soft);
+  border-color: var(--ova-cyan);
+  color: var(--ova-petrol);
+}
+
+.ova-hop.is-completada {
+  background: var(--ova-ok);
+  border-color: var(--ova-ok);
+  color: #ffffff;
+}
+
+/* ---------- Pie institucional ---------- */
+
+.ova-footer {
+  background: var(--ova-petrol-deep);
+  color: #f3ecff;
+  margin-top: 1rem;
+  padding: 1.75rem 0 1.4rem;
+  border-top: 4px solid var(--ova-cyan-bright);
+}
+
+.ova-footer p {
+  margin: 0 0 0.35rem;
+}
+
+.ova-footer-institucion {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+
+.ova-footer-ova,
+.ova-footer-docente,
+.ova-footer-equipo {
+  color: #e4d8fa;
+  font-size: 0.95rem;
+}
+
+.ova-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  margin-top: 0.85rem;
+}
+
+.ova-footer-nav a {
+  color: #efe4ff;
+  font-weight: 600;
+  text-underline-offset: 0.15em;
+}
+
+.ova-footer-nav a:hover {
+  color: #ffffff;
+}
+
+/* ---------- Cáscara de lectura ---------- */
+
+.ova-hero,
+.ova-page-head {
+  background-color: var(--ova-surface);
+  background-image:
+    linear-gradient(135deg, rgba(196, 170, 250, 0.5), rgba(255, 255, 255, 0.85) 70%),
+    linear-gradient(rgba(109, 40, 217, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 40, 217, 0.07) 1px, transparent 1px);
+  background-size: auto, 28px 28px, 28px 28px;
+  border: 1px solid var(--ova-line);
+  border-radius: 1rem;
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--ova-shadow);
+}
+
+.ova-hero {
+  margin-bottom: 1.5rem;
+}
+
+.ova-hero h1,
+.ova-page-head h1 {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.8rem, 4vw, 2.55rem);
+  letter-spacing: -0.02em;
+}
+
+.ova-page-head {
+  margin-bottom: 1.25rem;
+}
+
+.ova-page-head h1 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.ova-hero-docente,
+.ova-presentacion {
+  margin: 0.35rem 0 0;
+  max-width: 68rem;
+}
+
+.ova-objetivo-general,
+.ova-objetivos li,
+.ova-instruccion {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: 0.6rem;
+}
+
+.ova-objetivo-general {
+  border-left: 4px solid var(--ova-petrol);
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.ova-objetivos {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: objetivo;
+}
+
+.ova-objetivos li {
+  counter-increment: objetivo;
+  position: relative;
+  border-left: 4px solid var(--ova-indigo);
+  padding: 0.85rem 1rem 0.85rem 3.1rem;
+}
+
+.ova-objetivos li::before {
+  content: counter(objetivo);
+  position: absolute;
+  left: 0.75rem;
+  top: 0.85rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ova-indigo);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ova-instruccion {
+  height: 100%;
+  border-left: 4px solid var(--ova-cyan);
+  padding: 1rem 1.1rem;
+}
+
+.ova-instruccion h3 {
+  margin-top: 0;
+  font-size: 1.05rem;
+}
+
+.ova-integrante {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-bottom: 4px solid var(--ova-petrol);
+  border-radius: var(--ova-radius);
+  box-shadow: var(--ova-shadow);
+}
+
+.ova-integrante h3 {
+  margin: 0.2rem 0 0;
+  font-size: 1.25rem;
+}
+
+.ova-integrante-rol {
+  margin: 0;
+  color: var(--ova-indigo);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.ova-tabla {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  overflow: hidden;
+  box-shadow: var(--ova-shadow);
+}
+
+.ova-tabla .table {
+  margin-bottom: 0;
+  --bs-table-bg: #ffffff;
+  --bs-table-color: #1e1433;
+  --bs-table-striped-bg: #f8f5ff;
+  --bs-table-hover-bg: #f1eafe;
+}
+
+.ova-tabla thead th {
+  background: var(--ova-petrol);
+  color: #ffffff;
+  font-weight: 700;
+  border-bottom: 0;
+}
+
+/* ---------- Analogía y concepto ---------- */
+
+.ova-card {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  box-shadow: var(--ova-shadow);
+  overflow: hidden;
+}
+
+.ova-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  border-bottom: 0;
+}
+
+.ova-card .card-body {
+  color: var(--ova-text);
+}
+
+.ova-card h3 {
+  font-size: 1.15rem;
+}
+
+.ova-card-analogia {
+  border-top: 4px solid var(--ova-cyan-bright);
+}
+
+.ova-card-analogia .card-header {
+  background: var(--ova-petrol-soft);
+  color: var(--ova-petrol);
+}
+
+.ova-card-concepto {
+  border-top: 4px solid var(--ova-indigo);
+}
+
+.ova-card-concepto .card-header {
+  background: var(--ova-indigo-soft);
+  color: var(--ova-indigo);
+}
+
+/* ---------- Cabeceras de paquete y encapsulación ---------- */
+
+.ova-paquete {
+  position: relative;
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  box-shadow: var(--ova-shadow);
+  padding: 1rem 1rem 12.25rem;
+  margin-bottom: 1rem;
+}
+
+.ova-paquete-titulo {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--ova-petrol);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ova-regla {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  color: var(--ova-text-muted);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ova-cabecera,
+.ova-capas {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.ova-cabecera {
+  grid-template-columns: repeat(32, minmax(0, 1fr));
+}
+
+.ova-capas {
+  grid-template-columns: 1fr;
+}
+
+.ova-campo {
+  grid-column: span var(--bits, 8);
+  min-width: 0;
+}
+
+.ova-capas .ova-campo,
+.ova-capa .ova-campo {
+  grid-column: 1 / -1;
+}
+
+.ova-campo-hit {
+  position: relative;
+  height: 100%;
+  min-height: 3.6rem;
+}
+
+.ova-campo-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ova-campo-vista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  height: 100%;
+  min-height: 3.6rem;
+  margin: 0;
+  padding: 0.35rem 0.3rem;
+  border: 1px solid rgba(91, 33, 182, 0.2);
+  border-radius: 0.45rem;
+  background: var(--ova-petrol-soft);
+  color: var(--ova-text);
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.ova-campo-vista small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ova-text-muted);
+}
+
+.ova-cabecera .ova-campo:nth-child(even) .ova-campo-vista {
+  background: var(--ova-indigo-soft);
+}
+
+.ova-capa-aplicacion .ova-campo-vista {
+  background: var(--ova-ok-bg);
+}
+
+.ova-capa-transporte .ova-campo-vista {
+  background: var(--ova-indigo-soft);
+}
+
+.ova-capa-internet .ova-campo-vista {
+  background: var(--ova-petrol-soft);
+}
+
+.ova-capa-enlace .ova-campo-vista {
+  background: var(--ova-warn-bg);
+}
+
+.ova-paquete .ova-campo:has(input:checked) .ova-campo-vista {
+  background: var(--ova-petrol);
+  border-color: var(--ova-petrol);
+  color: #ffffff;
+}
+
+.ova-paquete .ova-campo:has(input:checked) .ova-campo-vista small {
+  color: #efe4ff;
+}
+
+.ova-campo:focus-within .ova-campo-vista {
+  outline: 3px solid var(--ova-focus);
+  outline-offset: 2px;
+}
+
+.ova-detalle-vacio,
+.ova-campo-info {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  max-height: 10.5rem;
+  overflow: auto;
+  border-radius: 0.6rem;
+}
+
+.ova-detalle-vacio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 6.5rem;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border: 1px dashed var(--ova-line);
+  background: #fcfaff;
+  color: var(--ova-text-muted);
+}
+
+.ova-paquete:has(.ova-campo input:checked) .ova-detalle-vacio {
+  display: none;
+}
+
+.ova-campo-info {
+  display: none;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  background: var(--ova-indigo-soft);
+  border: 1px solid #f0abfc;
+  color: var(--ova-text);
+}
+
+.ova-paquete .ova-campo:has(input:checked) .ova-campo-info {
+  display: block;
+}
+
+.ova-detalle-titulo {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  color: var(--ova-petrol);
+}
+
+.ova-campo-info p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Video ---------- */
+
+.ova-video {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  overflow: hidden;
+  box-shadow: var(--ova-shadow);
+  margin-bottom: 1rem;
+}
+
+.ova-video .ratio {
+  background: var(--ova-petrol-deep);
+}
+
+.ova-video iframe {
+  border: 0;
+}
+
+.ova-video-cita {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  background: #ffffff;
+  border-top: 3px solid var(--ova-cyan);
+  color: var(--ova-text);
+  font-size: 0.95rem;
+}
+
+.ova-video-cita .bi {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--ova-bad);
+}
+
+/* ---------- Cuestionarios, retos y juegos ---------- */
+
+.ova-actividad {
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  box-shadow: var(--ova-shadow);
+  padding: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.ova-actividad-quiz {
+  border-top: 4px solid var(--ova-petrol);
+}
+
+.ova-actividad-reto {
+  border-top: 4px solid var(--ova-indigo);
+}
+
+.ova-actividad-juego {
+  border-top: 4px solid var(--ova-cyan-bright);
+}
+
+.ova-actividad-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.ova-actividad .ova-progreso {
+  flex: 1 1 12rem;
+  height: 0.7rem;
+}
+
+.ova-actividad-paso {
+  margin: 0;
+  color: var(--ova-text-muted);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.ova-puntaje {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--ova-line);
+  border-radius: 999px;
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.ova-puntaje .bi {
+  color: var(--ova-warn);
+}
+
+.ova-puntaje strong {
+  color: var(--ova-petrol);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ova-caso,
+.ova-reto-enunciado {
+  margin-bottom: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--ova-bg);
+}
+
+.ova-caso-etiqueta {
+  margin: 0 0 0.25rem;
+  color: var(--ova-indigo);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ova-enunciado {
+  margin: 0 0 0.9rem;
+  color: var(--ova-petrol);
+  font-size: 1.15rem;
+}
+
+.ova-opciones,
+.ova-tablero {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.ova-tablero {
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  margin-bottom: 1rem;
+}
+
+.ova-opcion,
+.ova-tablero-celda {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.65rem 0.8rem;
+  border: 2px solid var(--ova-line);
+  border-radius: 0.7rem;
+  background: #ffffff;
+  color: var(--ova-text);
+  text-align: left;
+  font-weight: 600;
+}
+
+.ova-tablero-celda {
+  min-height: 4.5rem;
+  justify-content: center;
+  text-align: center;
+  border-style: dashed;
+  background: #faf7ff;
+}
+
+.ova-opcion:hover,
+.ova-tablero-celda:hover {
+  border-color: var(--ova-cyan);
+}
+
+.ova-opcion-letra {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 999px;
+  background: var(--ova-petrol-soft);
+  color: var(--ova-petrol);
+  font-size: 0.85rem;
+}
+
+.ova-opcion-estado {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.ova-opcion.is-seleccionada,
+.ova-tablero-celda.is-seleccionada {
+  border-style: solid;
+  border-color: var(--ova-indigo);
+  background: var(--ova-indigo-soft);
+}
+
+.ova-opcion.is-seleccionada .ova-opcion-estado::before {
+  content: "Seleccionada";
+  color: var(--ova-indigo);
+}
+
+.ova-opcion.is-correcta,
+.ova-tablero-celda.is-correcta {
+  border-style: solid;
+  border-color: var(--ova-ok);
+  background: var(--ova-ok-bg);
+}
+
+.ova-opcion.is-correcta .ova-opcion-letra,
+.ova-tablero-celda.is-correcta {
+  color: var(--ova-text);
+}
+
+.ova-opcion.is-correcta .ova-opcion-letra {
+  background: var(--ova-ok);
+  color: #ffffff;
+}
+
+.ova-opcion.is-correcta .ova-opcion-estado::before {
+  content: "Correcta";
+  color: var(--ova-ok);
+}
+
+.ova-opcion.is-incorrecta,
+.ova-tablero-celda.is-incorrecta {
+  border-style: solid;
+  border-color: var(--ova-bad);
+  background: var(--ova-bad-bg);
+}
+
+.ova-opcion.is-incorrecta .ova-opcion-letra {
+  background: var(--ova-bad);
+  color: #ffffff;
+}
+
+.ova-opcion.is-incorrecta .ova-opcion-estado::before {
+  content: "Incorrecta";
+  color: var(--ova-bad);
+}
+
+.ova-opciones.is-resuelto .ova-opcion:not(.is-correcta):not(.is-incorrecta),
+.ova-tablero.is-resuelto .ova-tablero-celda:not(.is-correcta):not(.is-incorrecta) {
+  opacity: 0.62;
+}
+
+.ova-opcion:disabled,
+.ova-tablero-celda:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.ova-btn-confirmar {
+  margin-top: 0.9rem;
+  background: var(--ova-petrol);
+  border: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.ova-btn-confirmar:hover,
+.ova-btn-confirmar:focus-visible {
+  background: var(--ova-petrol-deep);
+  color: #ffffff;
+}
+
+.ova-retro {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--ova-radius);
+}
+
+.ova-retro[hidden] {
+  display: none !important;
+}
+
+.ova-retro .bi {
+  flex: none;
+  margin-top: 0.15rem;
+  font-size: 1.25rem;
+}
+
+.ova-retro-titulo {
+  margin: 0;
+  font-weight: 800;
+}
+
+.ova-retro-texto {
+  margin: 0.15rem 0 0;
+}
+
+.ova-retro-correcta {
+  background: var(--ova-ok-bg);
+  border-color: var(--ova-ok-line);
+  color: #0b3d28;
+}
+
+.ova-retro-correcta .bi {
+  color: var(--ova-ok);
+}
+
+.ova-retro-incorrecta {
+  background: var(--ova-bad-bg);
+  border-color: var(--ova-bad-line);
+  color: #6f1515;
+}
+
+.ova-retro-incorrecta .bi {
+  color: var(--ova-bad);
+}
+
+/* ---------- Mapa de las 6 unidades ---------- */
+
+.ova-unidad {
+  display: block;
+  height: 100%;
+  background: var(--ova-surface);
+  border: 1px solid var(--ova-line);
+  border-radius: var(--ova-radius);
+  box-shadow: var(--ova-shadow);
+  color: var(--ova-text);
+  text-decoration: none;
+}
+
+.ova-unidad:hover {
+  border-color: var(--ova-cyan);
+  color: var(--ova-text);
+  text-decoration: none;
+}
+
+.ova-unidad-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ova-unidad-num {
+  color: var(--ova-cyan);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ova-unidad h3 {
+  margin: 0.55rem 0 0.3rem;
+  font-size: 1.08rem;
+}
+
+.ova-unidad p {
+  margin: 0;
+  color: var(--ova-text-muted);
+}
+
+.ova-unidad .ova-unidad-autor {
+  margin-top: 0.7rem;
+  color: var(--ova-indigo);
+  font-weight: 700;
+}
+
+.ova-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.ova-badge-pendiente {
+  background: #efeaf7;
+  color: var(--ova-text-muted);
+}
+
+.ova-badge-visitada,
+.ova-badge-completada {
+  display: none;
+}
+
+.ova-unidad.is-visitada {
+  border-left: 4px solid var(--ova-cyan);
+}
+
+.ova-unidad.is-visitada .ova-badge-pendiente {
+  display: none;
+}
+
+.ova-unidad.is-visitada .ova-badge-visitada {
+  display: inline-flex;
+  background: var(--ova-petrol-soft);
+  color: var(--ova-petrol);
+}
+
+.ova-unidad.is-completada {
+  border-left: 4px solid var(--ova-ok);
+}
+
+.ova-unidad.is-completada .ova-badge-pendiente,
+.ova-unidad.is-completada .ova-badge-visitada {
+  display: none;
+}
+
+.ova-unidad.is-completada .ova-badge-completada {
+  display: inline-flex;
+  background: var(--ova-ok-bg);
+  color: var(--ova-ok);
+}
+
+@media (max-width: 767.98px) {
+  .ova-cabecera {
+    grid-template-columns: 1fr;
+  }
+
+  .ova-cabecera .ova-campo {
+    grid-column: 1 / -1;
+  }
+
+  .ova-regla {
+    display: none;
+  }
+
+  .ova-opcion {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media print {
+  .ova-header,
+  .ova-footer-nav {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .ova-card,
+  .ova-unidad,
+  .ova-video,
+  .ova-paquete,
+  .ova-actividad,
+  .ova-hero,
+  .ova-page-head {
+    box-shadow: none;
+  }
+}
+
+/* ---------- Ajustes de paleta violeta (Bootstrap) ---------- */
+
+.btn-outline-primary {
+  --bs-btn-color: #5b21b6;
+  --bs-btn-border-color: #5b21b6;
+  --bs-btn-hover-bg: #5b21b6;
+  --bs-btn-hover-border-color: #5b21b6;
+  --bs-btn-active-bg: #4c1d95;
+  --bs-btn-active-border-color: #4c1d95;
+  --bs-btn-focus-shadow-rgb: 124, 58, 237;
+}
+
+.text-bg-primary {
+  background-color: #5b21b6 !important;
+  color: #ffffff !important;
+}
+
+.alert-info {
+  --bs-alert-color: #3b0f7a;
+  --bs-alert-bg: #f1eafe;
+  --bs-alert-border-color: #d9c8fb;
+}

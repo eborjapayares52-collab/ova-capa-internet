@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 4 · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body data-page="unidad4" data-unidad="unidad4">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="../index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="../retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="../evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Unidad 4 · Responsable: Elizabeth Borja</p>
+        <h1>IPv6, transición e ICMP</h1>
+      </header>
+
+      <!-- 1. Analogía y Concepto técnico -->
+      <section aria-labelledby="u4-intro-titulo">
+        <h2 id="u4-intro-titulo" class="visually-hidden">Introducción conceptual</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-analogia h-100">
+              <div class="card-header">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i>
+                Analogía cotidiana
+              </div>
+              <div class="card-body">
+                <h3>Ampliar la numeración telefónica y añadir avisos de vía</h3>
+                <p class="mb-0">Cuando una ciudad crece y se agotan los números telefónicos de 7 dígitos, se migra a un plan de 16 dígitos donde cada dispositivo tiene su propio número sin compartir línea (IPv6). Mientras tanto, las centrales antiguas y nuevas conviven usando líneas dobles o adaptadores (mecanismos de transición). Además, si un camino está cerrado, existen señales de carretera que avisan al remitente por qué no llegó su envío (ICMP).</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-concepto h-100">
+              <div class="card-header">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+                Concepto técnico
+              </div>
+              <div class="card-body">
+                <h3>IPv6 (RFC 8200) y control mediante ICMP</h3>
+                <p class="mb-0"><strong>IPv6</strong> expande el direccionamiento lógico a <strong>128 bits</strong> ($2^{128} \approx 3.4 \times 10^{38}$ direcciones en notación hexadecimal de 8 grupos de 16 bits) y simplifica la cabecera básica a <strong>40 bytes fijos</strong>. Por su parte, <strong>ICMP</strong> (Internet Control Message Protocol) opera junto a IP para notificar errores de entrega y ejecutar diagnósticos de red como <code>ping</code> y <code>traceroute</code>.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Diagrama interactivo de la cabecera IPv6 -->
+      <section class="mt-4" aria-labelledby="u4-cabecera-titulo">
+        <h2 id="u4-cabecera-titulo">Estructura de la cabecera básica IPv6 (40 bytes fijos)</h2>
+        <p>A diferencia de IPv4, la cabecera IPv6 elimina la fragmentación en routers y la suma de comprobación de cabecera, trasladando las opciones a <em>cabeceras de extensión</em> encadenadas. Selecciona cada campo para revisar su función:</p>
+
+        <div class="ova-paquete mt-3" data-protocolo="ipv6">
+          <div class="ova-paquete-titulo">
+            <span>Cabecera IPv6 (RFC 8200)</span>
+            <span>40 bytes fijos (320 bits)</span>
+          </div>
+          <div class="ova-regla" aria-hidden="true"><span>Bit 0</span><span>Bit 31</span></div>
+
+          <!-- Palabra 1: 4 + 8 + 20 = 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Primera palabra de la cabecera IPv6">
+            <div class="ova-campo" style="--bits: 4">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-version" aria-labelledby="u4-ipv6-version-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-version-nombre" for="u4-ipv6-version">Versión<small>4 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Versión (4 bits)</p>
+                <p>Vale <code>6</code> (<code>0110</code> en binario) e identifica el formato de datagrama IPv6.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 8">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-tc" aria-labelledby="u4-ipv6-tc-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-tc-nombre" for="u4-ipv6-tc">Clase de tráfico<small>8 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Clase de tráfico · Traffic Class (8 bits)</p>
+                <p>Equivalente a DSCP (6 bits) + ECN (2 bits) de IPv4; permite diferenciar prioridades de calidad de servicio (QoS) y notificar congestión explícita.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 20">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-flow" aria-labelledby="u4-ipv6-flow-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-flow-nombre" for="u4-ipv6-flow">Etiqueta de flujo<small>20 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Etiqueta de flujo · Flow Label (20 bits)</p>
+                <p>Identifica paquetes pertenecientes a un mismo flujo de comunicación (por ejemplo, una transmisión multimedia en tiempo real) para que los routers les apliquen un tratamiento uniforme sin inspeccionar puertos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabra 2: 16 + 8 + 8 = 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Segunda palabra de la cabecera IPv6">
+            <div class="ova-campo" style="--bits: 16">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-payload" aria-labelledby="u4-ipv6-payload-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-payload-nombre" for="u4-ipv6-payload">Longitud de carga útil<small>16 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Longitud de carga útil · Payload Length (16 bits)</p>
+                <p>Indica el tamaño en bytes de todo lo que sigue a los 40 bytes de la cabecera fija (incluyendo cabeceras de extensión y datos de transporte), hasta 65.535 bytes.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 8">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-next" aria-labelledby="u4-ipv6-next-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-next-nombre" for="u4-ipv6-next">Siguiente cabecera<small>8 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Siguiente cabecera · Next Header (8 bits)</p>
+                <p>Identifica el tipo de cabecera que viene inmediatamente después: puede ser una cabecera de extensión IPv6 (por ejemplo, <code>44</code> Fragmentación) o el protocolo de transporte (<code>6</code> TCP, <code>17</code> UDP, <code>58</code> ICMPv6).</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 8">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-hop" aria-labelledby="u4-ipv6-hop-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-hop-nombre" for="u4-ipv6-hop">Límite de saltos<small>8 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Límite de saltos · Hop Limit (8 bits)</p>
+                <p>Cumple exactamente la misma función que el TTL de IPv4: cada router lo decrementa en 1 y descarta el datagrama si llega a 0.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabras 3 a 6: 128 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Dirección IPv6 de origen">
+            <div class="ova-campo" style="--bits: 32">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-src" aria-labelledby="u4-ipv6-src-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-src-nombre" for="u4-ipv6-src">Dirección IPv6 de origen<small>128 bits (4 palabras de 32 bits)</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Dirección IPv6 de origen (128 bits)</p>
+                <p>Identificador lógico de 16 bytes del nodo emisor (por ejemplo, global unicast <code>2001:db8::/32</code> o link-local <code>fe80::/10</code>).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabras 7 a 10: 128 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Dirección IPv6 de destino">
+            <div class="ova-campo" style="--bits: 32">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u4-ipv6" id="u4-ipv6-dst" aria-labelledby="u4-ipv6-dst-nombre">
+                <label class="ova-campo-vista" id="u4-ipv6-dst-nombre" for="u4-ipv6-dst">Dirección IPv6 de destino<small>128 bits (4 palabras de 32 bits)</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Dirección IPv6 de destino (128 bits)</p>
+                <p>Dirección unicast, multicast o anycast del receptor final hacia donde los routers enrutan el datagrama.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="ova-detalle-vacio"><i class="bi bi-hand-index-thumb" aria-hidden="true"></i> Selecciona un campo de la cabecera IPv6 para inspeccionar su propósito.</p>
+        </div>
+      </section>
+
+      <!-- 3. Contraste IPv4 vs IPv6 y Mecanismos de transición -->
+      <section class="mt-4" aria-labelledby="u4-transicion-titulo">
+        <h2 id="u4-transicion-titulo">Contraste IPv4 frente a IPv6 y mecanismos de transición</h2>
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Comparación técnica entre IPv4 e IPv6</caption>
+            <thead>
+              <tr>
+                <th scope="col">Característica</th>
+                <th scope="col">IPv4</th>
+                <th scope="col">IPv6</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Longitud de dirección</th>
+                <td>32 bits (notación decimal punteada).</td>
+                <td>128 bits (notación hexadecimal separada por dos puntos).</td>
+              </tr>
+              <tr>
+                <th scope="row">Tamaño de cabecera</th>
+                <td>Variable: 20 a 60 bytes (según campo IHL).</td>
+                <td>Fija: 40 bytes (opciones en cabeceras de extensión).</td>
+              </tr>
+              <tr>
+                <th scope="row">Fragmentación</th>
+                <td>Realizada tanto por el origen como por routers intermedios.</td>
+                <td>Exclusiva del host origen (mediante descubrimiento de MTU de ruta).</td>
+              </tr>
+              <tr>
+                <th scope="row">Checksum de cabecera</th>
+                <td>Incluido (16 bits); recalculado en cada router.</td>
+                <td>Eliminado para acelerar el reenvío por hardware.</td>
+              </tr>
+              <tr>
+                <th scope="row">Dirección de difusión</th>
+                <td>Utiliza <em>broadcast</em>.</td>
+                <td>No existe <em>broadcast</em>; se reemplaza por direcciones <em>multicast</em> específicas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="h5 mt-4">Estrategias de convivencia y transición</h3>
+        <ul>
+          <li><strong>Doble pila (<em>Dual Stack</em>):</strong> los hosts y routers ejecutan simultáneamente las pilas de protocolos IPv4 e IPv6 en sus interfaces, eligiendo IPv6 cuando ambos extremos lo soportan y recurriendo a IPv4 si el destino solo tiene conectividad IPv4.</li>
+          <li><strong>Tunelización (<em>Tunneling</em>):</strong> encapsula datagramas IPv6 completos dentro de paquetes IPv4 (<code>Protocolo = 41</code>) para interconectar islas IPv6 a través de una red troncal que únicamente enruta IPv4.</li>
+          <li><strong>Traducción (NAT64 / DNS64):</strong> traduce encabezados y direcciones entre IPv6 e IPv4 en un router frontera, permitiendo que clientes exclusivamente IPv6 accedan a servidores que solo poseen dirección IPv4.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Protocolo ICMP: Ping y Traceroute -->
+      <section class="mt-4" aria-labelledby="u4-icmp-titulo">
+        <h2 id="u4-icmp-titulo">Mensajes de control ICMP: Ping y Traceroute</h2>
+        <p><strong>ICMP</strong> (RFC 792 para IPv4; <strong>ICMPv6</strong> RFC 4443 para IPv6) viaja encapsulado dentro de datagramas IP (<code>Protocolo = 1</code> en IPv4; <code>Siguiente cabecera = 58</code> en IPv6) y cumple dos roles fundamentales: reportar errores de red y ejecutar pruebas activas de diagnóstico.</p>
+
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Herramientas de diagnóstico basadas en ICMP</caption>
+            <thead>
+              <tr>
+                <th scope="col">Herramienta</th>
+                <th scope="col">Mensajes ICMP involucrados</th>
+                <th scope="col">Funcionamiento paso a paso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><code>ping</code></th>
+                <td><strong>Echo Request</strong> (IPv4 Tipo 8 / IPv6 Tipo 128) y <strong>Echo Reply</strong> (IPv4 Tipo 0 / IPv6 Tipo 129).</td>
+                <td>Verifica si un nodo destino es alcanzable en capa de Internet y mide el tiempo de ida y vuelta (<em>Round-Trip Time</em> o RTT) y el porcentaje de pérdida de paquetes.</td>
+              </tr>
+              <tr>
+                <th scope="row"><code>traceroute</code> / <code>tracert</code></th>
+                <td><strong>Time Exceeded</strong> (IPv4 Tipo 11 / IPv6 Tipo 3) y <strong>Destination Unreachable</strong> (IPv4 Tipo 3 / IPv6 Tipo 1).</td>
+                <td>Envía ráfagas de paquetes con <code>TTL</code> / <code>Hop Limit</code> iniciando en <code>1</code> e incrementándolo en <code>1</code> en cada ronda. Cada router donde el contador llega a <code>0</code> descarta el paquete y devuelve un mensaje <em>Time Exceeded</em>, revelando la secuencia exacta de saltos hasta el destino.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. Recurso audiovisual -->
+      <section class="mt-4" aria-labelledby="u4-video-titulo">
+        <h2 id="u4-video-titulo">Recurso audiovisual de apoyo</h2>
+        <figure class="ova-video">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/zZPP2c29QBY"
+                title="IPv6, mecanismos de transición y mensajes de diagnóstico ICMP"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <figcaption class="ova-video-cita">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+              <span>Pedro Lino Cáceres. (2024). <cite>Direccionamiento IPv6 para CCNA: tipos de direcciones, SLAAC y DHCPv6</cite>. YouTube. https://www.youtube.com/watch?v=zZPP2c29QBY</span>
+            </figcaption>
+          </figure>
+      </section>
+
+      <!-- 6. Cuestionario interactivo -->
+      <section class="mt-4" aria-labelledby="u4-quiz-titulo">
+        <h2 id="u4-quiz-titulo">Comprueba lo aprendido</h2>
+        <p>Resuelve las 5 preguntas sobre cabecera y direccionamiento IPv6, transición e ICMP (Ping y Traceroute) para registrar esta unidad como <strong>Completada</strong>.</p>
+        <div data-ova-quiz="unidad4"></div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre unidades">
+        <a class="btn btn-outline-secondary" href="unidad3.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Anterior: Unidad 3</a>
+        <a class="btn ova-btn-confirmar" href="unidad5.html">Siguiente: Unidad 5 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="../index.html">Inicio</a>
+        <a href="../retos.html">Retos</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../evaluacion.html">Evaluación</a>
+        <a href="../creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/data/unidad4.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+</body>
+</html>

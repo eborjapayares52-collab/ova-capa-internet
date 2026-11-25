@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 2 · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body data-page="unidad2" data-unidad="unidad2">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="../index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="../retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="../evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Unidad 2 · Responsable: Jose Alcázar</p>
+        <h1>Router, colas y reenvío</h1>
+      </header>
+
+      <!-- 1. Analogía y Concepto técnico -->
+      <section aria-labelledby="u2-intro-titulo">
+        <h2 id="u2-intro-titulo" class="visually-hidden">Introducción conceptual</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-analogia h-100">
+              <div class="card-header">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i>
+                Analogía cotidiana
+              </div>
+              <div class="card-body">
+                <h3>El centro logístico automatizado</h3>
+                <p class="mb-0">Piensa en una bodega de envíos con varios muelles de descarga (puertos de entrada), cintas transportadoras internas (entramado de conmutación) y muelles de despacho hacia distintas ciudades (puertos de salida). Un sistema central diseña el mapa de rutas del día (plano de control), mientras los lectores ópticos desvían cada caja al muelle correcto en milisegundos (plano de datos). Si llegan demasiadas cajas para un mismo camión, se acumulan en la rampa de salida hasta que el espacio se llena.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-concepto h-100">
+              <div class="card-header">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+                Concepto técnico
+              </div>
+              <div class="card-body">
+                <h3>Arquitectura interna del router: control frente a datos</h3>
+                <p class="mb-0">Un router separa sus funciones en dos planos: el <strong>plano de control</strong> ejecuta protocolos de enrutamiento para construir la tabla de rutas, mientras que el <strong>plano de datos</strong> consulta la tabla de reenvío local mediante la regla de <strong>coincidencia de prefijo más largo</strong> (<em>Longest Prefix Match</em>) y transfiere cada datagrama desde la interfaz de entrada hasta la de salida.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Diagrama interactivo de arquitectura del router -->
+      <section class="mt-4" aria-labelledby="u2-arquitectura-titulo">
+        <h2 id="u2-arquitectura-titulo">Componentes internos de un router</h2>
+        <p>El recorrido interno de un datagrama atraviesa cuatro subsistemas especializados. Selecciona cada bloque para inspeccionar qué procesamiento ocurre en él:</p>
+
+        <div class="ova-paquete mt-3" data-protocolo="router-arquitectura">
+          <div class="ova-paquete-titulo">
+            <span>Arquitectura genérica de un router</span>
+            <span>4 subsistemas (selecciona un bloque)</span>
+          </div>
+          <div class="ova-capas" role="radiogroup" aria-label="Subsistemas internos de un router">
+            <div class="ova-campo ova-capa ova-capa-aplicacion">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u2-router" id="u2-router-control" aria-labelledby="u2-router-control-nombre">
+                <label class="ova-campo-vista" id="u2-router-control-nombre" for="u2-router-control">Procesador de enrutamiento<small>Plano de control · Software</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Procesador de enrutamiento (Routing Processor)</p>
+                <p>Ejecuta protocolos dinámicos (RIP, OSPF, BGP), procesa rutas estáticas y construye la tabla de reenvío que luego descarga hacia los puertos de entrada. Opera en escala de milisegundos a segundos.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-transporte">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u2-router" id="u2-router-entrada" aria-labelledby="u2-router-entrada-nombre">
+                <label class="ova-campo-vista" id="u2-router-entrada-nombre" for="u2-router-entrada">Puertos de entrada<small>Plano de datos · Búsqueda y cola</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Puertos de entrada (Input Ports)</p>
+                <p>Terminan la capa física y de enlace (desencapsulando la trama), verifican la suma de comprobación IP, decrementan el TTL y buscan la IP destino en su copia local de la tabla de reenvío usando <em>Longest Prefix Match</em>.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-internet">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u2-router" id="u2-router-fabric" aria-labelledby="u2-router-fabric-nombre">
+                <label class="ova-campo-vista" id="u2-router-fabric-nombre" for="u2-router-fabric">Entramado de conmutación<small>Plano de datos · Núcleo interno</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Entramado de conmutación (Switching Fabric)</p>
+                <p>Conecta físicamente los puertos de entrada con los de salida dentro del chasis del router. Su velocidad determina cuántos paquetes por segundo puede conmutar el equipo sin saturarse.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-enlace">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u2-router" id="u2-router-salida" aria-labelledby="u2-router-salida-nombre">
+                <label class="ova-campo-vista" id="u2-router-salida-nombre" for="u2-router-salida">Puertos de salida<small>Plano de datos · Búfer y serialización</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Puertos de salida (Output Ports)</p>
+                <p>Almacenan en búfer los datagramas recibidos desde el entramado, aplican disciplinas de planificación de cola, encapsulan el paquete en la trama del siguiente enlace y lo transmiten al medio físico.</p>
+              </div>
+            </div>
+          </div>
+          <p class="ova-detalle-vacio"><i class="bi bi-diagram-3" aria-hidden="true"></i> Haz clic en cualquiera de los cuatro bloques del router para ver su función en el reenvío.</p>
+        </div>
+      </section>
+
+      <!-- 3. Entramados de conmutación y gestión de colas -->
+      <section class="mt-4" aria-labelledby="u2-conmutacion-titulo">
+        <h2 id="u2-conmutacion-titulo">Mecanismos de conmutación y gestión de colas</h2>
+        <p>El rendimiento de un router depende tanto de cómo traslada los paquetes internamente como de cómo administra las colas cuando existe congestión:</p>
+
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Comparación de entramados de conmutación en routers</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tipo de entramado</th>
+                <th scope="col">Funcionamiento</th>
+                <th scope="col">Limitación principal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Conmutación por memoria</th>
+                <td>La CPU copia el paquete desde el puerto de entrada a la memoria principal y luego al puerto de salida.</td>
+                <td>Limitado por el ancho de banda del bus de memoria; solo se transfiere un paquete a la vez.</td>
+              </tr>
+              <tr>
+                <th scope="row">Conmutación por bus</th>
+                <td>El puerto de entrada transfiere el datagrama directamente al de salida a través de un bus compartido sin intervención de la CPU.</td>
+                <td>Un único paquete puede ocupar el bus compartido en cada instante.</td>
+              </tr>
+              <tr>
+                <th scope="row">Red de interconexión (<em>Crossbar</em>)</th>
+                <td>Matriz de buses horizontales y verticales que conecta múltiples entradas con múltiples salidas simultáneamente.</td>
+                <td>Mayor complejidad de hardware, pero permite conmutación paralela si los destinos son distintos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="h5 mt-4">Colas, bloqueo HOL y pérdida de paquetes</h3>
+        <ul>
+          <li><strong>Colas en puertos de entrada y bloqueo HOL:</strong> si el entramado es más lento que la suma de las líneas de entrada, se forman colas en los puertos de entrada. En colas FIFO ocurre el <em>Head-of-Line (HOL) blocking</em>: un paquete al frente de la cola retenido por congestión en su puerto de salida impide avanzar a otros paquetes detrás de él que van hacia puertos libres.</li>
+          <li><strong>Colas en puertos de salida y descarte:</strong> cuando varios puertos de entrada envían tráfico hacia el mismo puerto de salida simultáneamente, el búfer de salida crece. Si se agota la memoria disponible, el router descarta datagramas (política <em>drop-tail</em> o gestión activa como RED).</li>
+          <li><strong>Disciplinas de planificación (<em>scheduling</em>):</strong> determinan qué paquete en cola se transmite primero: <strong>FIFO</strong> (orden de llegada), <strong>colas de prioridad</strong> (favorecen tráfico sensible como voz o control) y <strong>WFQ</strong> (<em>Weighted Fair Queuing</em>, reparte el enlace proporcionalmente entre flujos).</li>
+        </ul>
+      </section>
+
+      <!-- 4. Recurso audiovisual -->
+      <section class="mt-4" aria-labelledby="u2-video-titulo">
+        <h2 id="u2-video-titulo">Recurso audiovisual de apoyo</h2>
+        <figure class="ova-video">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/UV6TFPDCMOY"
+                title="Recurso audiovisual de apoyo sobre redes TCP/IP"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <figcaption class="ova-video-cita">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+              <span>Tech Explained. (2025). <cite>Plano de control vs. plano de datos: La capa de red explicada</cite>. YouTube. https://www.youtube.com/watch?v=UV6TFPDCMOY</span>
+            </figcaption>
+          </figure>
+      </section>
+
+      <!-- 5. Cuestionario interactivo -->
+      <section class="mt-4" aria-labelledby="u2-quiz-titulo">
+        <h2 id="u2-quiz-titulo">Comprueba lo aprendido</h2>
+        <p>Resuelve las 5 preguntas sobre arquitectura de routers, planos de control y datos, conmutación y gestión de colas para registrar esta unidad como <strong>Completada</strong>.</p>
+        <div data-ova-quiz="unidad2"></div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre unidades">
+        <a class="btn btn-outline-secondary" href="unidad1.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Anterior: Unidad 1</a>
+        <a class="btn ova-btn-confirmar" href="unidad3.html">Siguiente: Unidad 3 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="../index.html">Inicio</a>
+        <a href="../retos.html">Retos</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../evaluacion.html">Evaluación</a>
+        <a href="../creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/data/unidad2.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+</body>
+</html>

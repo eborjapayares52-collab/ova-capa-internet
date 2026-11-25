@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 1 · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body data-page="unidad1" data-unidad="unidad1">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="../index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="../retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="../evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Unidad 1 · Responsable: Jose Alcázar</p>
+        <h1>Funciones, encapsulación y datagramas</h1>
+      </header>
+
+      <!-- 1. Analogía y Concepto técnico -->
+      <section aria-labelledby="u1-intro-titulo">
+        <h2 id="u1-intro-titulo" class="visually-hidden">Introducción conceptual</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-analogia h-100">
+              <div class="card-header">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i>
+                Analogía cotidiana
+              </div>
+              <div class="card-body">
+                <h3>El servicio postal sin ruta reservada</h3>
+                <p class="mb-0">Imagina enviar una carta escrita en una hoja (mensaje), guardada dentro de un sobre interior con el nombre del destinatario (segmento) y luego dentro de un sobre exterior con ciudad, calle y código postal (datagrama IP). Cada oficina de correos lee únicamente la dirección exterior y decide hacia qué centro despacharla, sin bloquear de antemano toda la carretera para esa carta.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-concepto h-100">
+              <div class="card-header">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+                Concepto técnico
+              </div>
+              <div class="card-body">
+                <h3>Capa de Internet y servicio de mejor esfuerzo</h3>
+                <p class="mb-0">La capa de Internet (capa 3 del modelo TCP/IP) interconecta redes heterogéneas mediante direccionamiento lógico jerárquico (IPv4/IPv6) y enrutamiento de datagramas. Ofrece un servicio <strong>sin conexión</strong> y de <strong>mejor esfuerzo</strong> (<em>best-effort</em>): cada paquete se reenvía de manera independiente sin garantizar orden ni retransmisión a nivel de red.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Funciones y Encapsulación interactiva -->
+      <section class="mt-4" aria-labelledby="u1-encapsulacion-titulo">
+        <h2 id="u1-encapsulacion-titulo">Funciones clave y proceso de encapsulación</h2>
+        <p>Para transportar información desde un host origen hasta un host destino atravesando múltiples subredes, la capa de Internet cumple cuatro funciones esenciales:</p>
+        <ul>
+          <li><strong>Direccionamiento lógico:</strong> asigna identificadores jerárquicos (direcciones IP) independientes del hardware físico de cada red local.</li>
+          <li><strong>Encapsulación en datagramas:</strong> recibe el segmento de la capa de transporte y le añade la cabecera IP con direcciones de origen y destino, tiempo de vida (TTL/Hop Limit) e identificador de protocolo superior.</li>
+          <li><strong>Enrutamiento (plano de control):</strong> determina las rutas óptimas a través de la interred mediante algoritmos y protocolos dinámicos o rutas estáticas.</li>
+          <li><strong>Reenvío o <em>forwarding</em> (plano de datos):</strong> transfiere cada datagrama que llega a una interfaz de entrada del router hacia la interfaz de salida correspondiente según su tabla de reenvío.</li>
+        </ul>
+
+        <div class="ova-paquete mt-3" data-protocolo="encapsulacion">
+          <div class="ova-paquete-titulo">
+            <span>Encapsulación descendiente</span>
+            <span>Modelo TCP/IP (haz clic en cada capa)</span>
+          </div>
+          <div class="ova-capas" role="radiogroup" aria-label="Capas de la encapsulación en TCP/IP">
+            <div class="ova-campo ova-capa ova-capa-aplicacion">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u1-enc" id="u1-enc-app" aria-labelledby="u1-enc-app-nombre">
+                <label class="ova-campo-vista" id="u1-enc-app-nombre" for="u1-enc-app">Datos de aplicación<small>Capa 4 · Mensaje</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Datos de aplicación (HTTP, DNS, SMTP)</p>
+                <p>Información generada por el proceso de usuario. Aún no posee direcciones de puerto ni direcciones IP; se entrega a la capa de transporte mediante un <em>socket</em>.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-transporte">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u1-enc" id="u1-enc-trans" aria-labelledby="u1-enc-trans-nombre">
+                <label class="ova-campo-vista" id="u1-enc-trans-nombre" for="u1-enc-trans">Segmento / Datagrama UDP<small>Capa 3 · Transporte</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Cabecera de Transporte + Datos</p>
+                <p>TCP o UDP añaden los puertos de origen y destino para multiplexar procesos. Esta PDU completa pasa a ser la carga útil (<em>payload</em>) de la capa de Internet.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-internet">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u1-enc" id="u1-enc-ip" aria-labelledby="u1-enc-ip-nombre">
+                <label class="ova-campo-vista" id="u1-enc-ip-nombre" for="u1-enc-ip">Datagrama IP<small>Capa 2 · Internet</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Cabecera IP + Segmento</p>
+                <p>La capa de Internet agrega las direcciones IP lógicas de origen y destino (32 bits en IPv4 o 128 bits en IPv6) para guiar el paquete extremo a extremo a través de los routers.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-enlace">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u1-enc" id="u1-enc-enlace" aria-labelledby="u1-enc-enlace-nombre">
+                <label class="ova-campo-vista" id="u1-enc-enlace-nombre" for="u1-enc-enlace">Trama<small>Capa 1 · Acceso a la red</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Cabecera de Enlace + Datagrama IP + Tráiler (FCS)</p>
+                <p>Ethernet o Wi-Fi encapsulan el datagrama IP con direcciones físicas MAC válidas únicamente dentro del salto local actual; en cada router esta cabecera se desencapsula y reconstruye.</p>
+              </div>
+            </div>
+          </div>
+          <p class="ova-detalle-vacio"><i class="bi bi-layers" aria-hidden="true"></i> Selecciona una capa para inspeccionar qué encabezado se añade y cuál es su alcance.</p>
+        </div>
+      </section>
+
+      <!-- 3. Redes de datagramas vs. circuitos virtuales -->
+      <section class="mt-4" aria-labelledby="u1-comparativa-titulo">
+        <h2 id="u1-comparativa-titulo">Redes de datagramas frente a redes de circuitos virtuales</h2>
+        <p>Las arquitecturas de conmutación de paquetes en capa de red se dividen en dos paradigmas según si mantienen o no estado por conexión en los nodos intermedios:</p>
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Comparación entre redes de datagramas y redes de circuitos virtuales</caption>
+            <thead>
+              <tr>
+                <th scope="col">Criterio</th>
+                <th scope="col">Red de datagramas (Internet / IP)</th>
+                <th scope="col">Red de circuitos virtuales (ATM / MPLS)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Establecimiento previo</th>
+                <td>No requiere fase de configuración de ruta antes de transmitir datos.</td>
+                <td>Exige fase de señalización para crear el circuito virtual antes del envío.</td>
+              </tr>
+              <tr>
+                <th scope="row">Identificador en cabecera</th>
+                <td>Dirección completa de origen y destino en cada paquete.</td>
+                <td>Identificador corto de circuito virtual (VCI) que cambia en cada enlace.</td>
+              </tr>
+              <tr>
+                <th scope="row">Estado en los routers</th>
+                <td>Sin estado por flujo (<em>stateless</em>); solo mantienen tablas por prefijo de destino.</td>
+                <td>Con estado por conexión; cada router almacena la tabla de traducción de VCI.</td>
+              </tr>
+              <tr>
+                <th scope="row">Trayectoria y orden</th>
+                <td>Cada datagrama puede tomar rutas distintas y llegar desordenado.</td>
+                <td>Todos los paquetes siguen el mismo camino en orden secuencial.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tolerancia a fallos</th>
+                <td>Alta: los paquetes siguientes se redirigen automáticamente ante la caída de un enlace.</td>
+                <td>Sensible: si falla un nodo del camino, el circuito debe señalizarse de nuevo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. Recurso audiovisual -->
+      <section class="mt-4" aria-labelledby="u1-video-titulo">
+        <h2 id="u1-video-titulo">Recurso audiovisual de apoyo</h2>
+        <figure class="ova-video">
+            <div class="ratio ratio-16x9">
+                <iframe
+            src="https://www.youtube-nocookie.com/embed/iNh-62Mf0O4"
+            title="Modelo TCP/IP, encapsulación y datagramas"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+            </div>
+            <figcaption class="ova-video-cita">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+              <span>NASeros. (2021). <cite>Modelo de capas OSI y TCP/IP. Curso de redes desde 0 | Cap 12 |</cite>. YouTube. https://www.youtube.com/watch?v=iNh-62Mf0O4</span>
+            </figcaption>
+          </figure>
+      </section>
+
+      <!-- 5. Cuestionario interactivo -->
+      <section class="mt-4" aria-labelledby="u1-quiz-titulo">
+        <h2 id="u1-quiz-titulo">Comprueba lo aprendido</h2>
+        <p>Responde las siguientes 5 preguntas sobre funciones de la capa de Internet, encapsulación y datagramas. Al finalizar, la unidad quedará marcada como <strong>Completada</strong> en tu progreso.</p>
+        <div data-ova-quiz="unidad1"></div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre unidades">
+        <a class="btn btn-outline-secondary" href="../index.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver al inicio</a>
+        <a class="btn ova-btn-confirmar" href="unidad2.html">Siguiente: Unidad 2 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="../index.html">Inicio</a>
+        <a href="../retos.html">Retos</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../evaluacion.html">Evaluación</a>
+        <a href="../creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/data/unidad1.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+</body>
+</html>

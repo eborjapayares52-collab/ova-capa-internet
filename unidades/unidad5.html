@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 5 · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body data-page="unidad5" data-unidad="unidad5">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="../index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="../retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="../evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Unidad 5 · Responsable: Isaias Llorente</p>
+        <h1>Enrutamiento y algoritmos</h1>
+      </header>
+
+      <!-- 1. Analogía y Concepto técnico -->
+      <section aria-labelledby="u5-intro-titulo">
+        <h2 id="u5-intro-titulo" class="visually-hidden">Introducción conceptual</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-analogia h-100">
+              <div class="card-header">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i>
+                Analogía cotidiana
+              </div>
+              <div class="card-body">
+                <h3>El mapa impreso frente al navegador GPS conectado</h3>
+                <p class="mb-0">Configurar una ruta estática equivale a imprimir un mapa con instrucciones fijas: funciona bien si las calles nunca cambian, pero si cierran una avenida tendrás que detenerte y reescribir la ruta a mano. En cambio, el enrutamiento dinámico funciona como un GPS conectado que recibe reportes de tráfico en tiempo real y recalcula al instante el camino de menor costo.</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-concepto h-100">
+              <div class="card-header">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+                Concepto técnico
+              </div>
+              <div class="card-body">
+                <h3>Determinación de rutas sobre grafos ponderados</h3>
+                <p class="mb-0">El <strong>enrutamiento</strong> consiste en hallar caminos de costo mínimo desde un origen hasta un destino modelando la red como un grafo $G = (N, E)$, donde los nodos $N$ son routers y las aristas $E$ son enlaces con un <strong>costo o métrica</strong> (saltos, retardo, inverso del ancho de banda o carga). Puede administrarse de forma <strong>estática</strong> o calcularse mediante <strong>algoritmos dinámicos</strong>.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Enrutamiento estático vs. dinámico -->
+      <section class="mt-4" aria-labelledby="u5-estatico-dinamico-titulo">
+        <h2 id="u5-estatico-dinamico-titulo">Enrutamiento estático frente a enrutamiento dinámico</h2>
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Comparación entre enrutamiento estático y dinámico</caption>
+            <thead>
+              <tr>
+                <th scope="col">Criterio</th>
+                <th scope="col">Enrutamiento estático</th>
+                <th scope="col">Enrutamiento dinámico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Configuración y mantenimiento</th>
+                <td>Manual por el administrador de red; escala con dificultad en topologías extensas.</td>
+                <td>Automática mediante intercambio de mensajes de control entre routers vecinos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Respuesta ante fallos</th>
+                <td>No se adapta por sí solo; requiere intervención humana o rutas flotantes respaldadas.</td>
+                <td>Converge automáticamente recalculando caminos alternativos al detectar la caída de un enlace.</td>
+              </tr>
+              <tr>
+                <th scope="row">Consumo de recursos</th>
+                <td>Mínimo uso de CPU, memoria RAM y ancho de banda de enlace.</td>
+                <td>Consume ciclos de CPU, memoria para bases de datos de rutas y ancho de banda para actualizaciones.</td>
+              </tr>
+              <tr>
+                <th scope="row">Previsibilidad y seguridad</th>
+                <td>Trayectoria determinista; no expone información topológica por la red.</td>
+                <td>Trayectoria variable según métricas; requiere autenticación de vecinos para evitar inyección de rutas falsas.</td>
+              </tr>
+              <tr>
+                <th scope="row">Escenario típico</th>
+                <td>Redes periféricas (<em>stub networks</em>), rutas por defecto (<code>0.0.0.0/0</code>) y enlaces punto a punto simples.</td>
+                <td>Redes empresariales multisitio, proveedores de servicios (ISP) y sistemas autónomos interconectados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. Diagrama interactivo de paradigmas y mecanismos -->
+      <section class="mt-4" aria-labelledby="u5-algoritmos-titulo">
+        <h2 id="u5-algoritmos-titulo">Paradigmas de algoritmos de enrutamiento dinámico</h2>
+        <p>Los algoritmos de enrutamiento dinámico se clasifican según la amplitud de la información topológica que manejan y la forma en que calculan el camino óptimo. Selecciona cada bloque para examinar su lógica:</p>
+
+        <div class="ova-paquete mt-3" data-protocolo="enrutamiento-algoritmos">
+          <div class="ova-paquete-titulo">
+            <span>Enfoques de cálculo de rutas</span>
+            <span>4 componentes clave (haz clic para explorar)</span>
+          </div>
+          <div class="ova-capas" role="radiogroup" aria-label="Paradigmas y técnicas de enrutamiento">
+            <div class="ova-campo ova-capa ova-capa-aplicacion">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u5-alg" id="u5-alg-estatico" aria-labelledby="u5-alg-estatico-nombre">
+                <label class="ova-campo-vista" id="u5-alg-estatico-nombre" for="u5-alg-estatico">Ruta estática y por defecto<small>Control manual · Prefijo fijo</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Enrutamiento estático y ruta predeterminada (Gateway of Last Resort)</p>
+                <p>El administrador define explícitamente el prefijo destino y la interfaz o IP del siguiente salto. La ruta por defecto (<code>0.0.0.0/0</code> en IPv4 o <code>::/0</code> en IPv6) captura cualquier destino que no tenga una coincidencia más específica en la tabla.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-transporte">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u5-alg" id="u5-alg-ls" aria-labelledby="u5-alg-ls-nombre">
+                <label class="ova-campo-vista" id="u5-alg-ls-nombre" for="u5-alg-ls">Estado de enlace (Link-State)<small>Algoritmo de Dijkstra · Mapa global</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Algoritmo de Estado de Enlace (Shortest Path First · Dijkstra)</p>
+                <p>Cada router descubre a sus vecinos y difunde por inundación controlada (<em>flooding</em>) paquetes LSA con el costo de sus enlaces directos. Todos los routers reúnen la misma base de datos topológica (LSDB) y ejecutan el algoritmo de Dijkstra para calcular el árbol de caminos más cortos.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-internet">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u5-alg" id="u5-alg-dv" aria-labelledby="u5-alg-dv-nombre">
+                <label class="ova-campo-vista" id="u5-alg-dv-nombre" for="u5-alg-dv">Vector de distancia (Distance-Vector)<small>Algoritmo de Bellman-Ford · Iterativo</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Algoritmo de Vector de Distancia (Bellman-Ford distribuido)</p>
+                <p>Cada nodo mantiene un vector con las distancias estimadas hacia todos los destinos y lo intercambia únicamente con sus vecinos directos. Al recibir el vector de un vecino $v$, actualiza su distancia mediante la ecuación $D_x(y) = \min_v \{ c(x,v) + D_v(y) \}$.</p>
+              </div>
+            </div>
+            <div class="ova-campo ova-capa ova-capa-enlace">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u5-alg" id="u5-alg-bucles" aria-labelledby="u5-alg-bucles-nombre">
+                <label class="ova-campo-vista" id="u5-alg-bucles-nombre" for="u5-alg-bucles">Prevención de bucles<small>Split Horizon y Route Poisoning</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Mitigación de cuenta al infinito (Count-to-Infinity)</p>
+                <p>Para evitar que las malas noticias (caídas de enlaces) generen bucles en vector de distancia, se emplean el <strong>horizonte dividido</strong> (no anunciar una ruta por la interfaz donde se aprendió), el <strong>envenenamiento de ruta</strong> (anunciar costo infinito inmediato) y temporizadores de espera (<em>hold-down</em>).</p>
+              </div>
+            </div>
+          </div>
+          <p class="ova-detalle-vacio"><i class="bi bi-signpost-split" aria-hidden="true"></i> Selecciona un paradigma para analizar cómo construye la tabla de rutas y cómo reacciona ante cambios.</p>
+        </div>
+      </section>
+
+      <!-- 4. Tabla comparativa Estado de Enlace vs Vector de Distancia -->
+      <section class="mt-4" aria-labelledby="u5-comparativa-alg-titulo">
+        <h2 id="u5-comparativa-alg-titulo">Estado de enlace frente a vector de distancia</h2>
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Comparación entre algoritmos de estado de enlace y vector de distancia</caption>
+            <thead>
+              <tr>
+                <th scope="col">Dimensión</th>
+                <th scope="col">Estado de enlace (Link-State)</th>
+                <th scope="col">Vector de distancia (Distance-Vector)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Algoritmo matemático</th>
+                <td>Algoritmo de Dijkstra (SPF).</td>
+                <td>Algoritmo distribuido de Bellman-Ford.</td>
+              </tr>
+              <tr>
+                <th scope="row">Conocimiento topológico</th>
+                <td>Mapa completo de nodos y enlaces del área.</td>
+                <td>Solo costos hacia vecinos directos y distancias reportadas por ellos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Alcance de mensajes</th>
+                <td>Inundación (<em>flooding</em>) de pequeños paquetes LSA a todos los routers del área.</td>
+                <td>Intercambio de vectores de distancia completos únicamente con vecinos directos.</td>
+              </tr>
+              <tr>
+                <th scope="row">Velocidad de convergencia</th>
+                <td>Rápida: los cambios de enlace se propagan de inmediato tras detectarse.</td>
+                <td>Más lenta: requiere múltiples rondas de intercambio entre vecinos; susceptible a cuenta al infinito.</td>
+              </tr>
+              <tr>
+                <th scope="row">Ejemplos de protocolos</th>
+                <td>OSPF, IS-IS.</td>
+                <td>RIPv1, RIPv2, RIPng.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. Recurso audiovisual -->
+      <section class="mt-4" aria-labelledby="u5-video-titulo">
+        <h2 id="u5-video-titulo">Recurso audiovisual de apoyo</h2>
+        <figure class="ova-video">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/xzU8lDpVoG8"
+                title="Enrutamiento estático, dinámico y algoritmos de estado de enlace y vector de distancia"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <figcaption class="ova-video-cita">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+              <span>Pedro Lino Cáceres. (2024). <cite>Enrutamiento estático vs dinámico: diferencias y cuál elegir
+            </cite>. YouTube. https://www.youtube.com/watch?v=xzU8lDpVoG8</span>
+            </figcaption>
+          </figure>
+      </section>
+
+      <!-- 6. Cuestionario interactivo -->
+      <section class="mt-4" aria-labelledby="u5-quiz-titulo">
+        <h2 id="u5-quiz-titulo">Comprueba lo aprendido</h2>
+        <p>Responde las 5 preguntas sobre enrutamiento estático, dinámico, Dijkstra y Bellman-Ford para registrar esta unidad como <strong>Completada</strong>.</p>
+        <div data-ova-quiz="unidad5"></div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre unidades">
+        <a class="btn btn-outline-secondary" href="unidad4.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Anterior: Unidad 4</a>
+        <a class="btn ova-btn-confirmar" href="unidad6.html">Siguiente: Unidad 6 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="../index.html">Inicio</a>
+        <a href="../retos.html">Retos</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../evaluacion.html">Evaluación</a>
+        <a href="../creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/data/unidad5.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+</body>
+</html>

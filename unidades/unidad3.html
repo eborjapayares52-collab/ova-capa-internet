@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidad 3 · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="../css/styles.css" rel="stylesheet">
+</head>
+<body data-page="unidad3" data-unidad="unidad3">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="../index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="../retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="../juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="../evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="../creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Unidad 3 · Responsable: Elizabeth Borja</p>
+        <h1>IPv4: encabezado y direccionamiento</h1>
+      </header>
+
+      <!-- 1. Analogía y Concepto técnico -->
+      <section aria-labelledby="u3-intro-titulo">
+        <h2 id="u3-intro-titulo" class="visually-hidden">Introducción conceptual</h2>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-analogia h-100">
+              <div class="card-header">
+                <i class="bi bi-lightbulb" aria-hidden="true"></i>
+                Analogía cotidiana
+              </div>
+              <div class="card-body">
+                <h3>El formulario de aduana y el código postal</h3>
+                <p class="mb-0">Una dirección IPv4 funciona como una dirección postal dividida en ciudad/barrio (prefijo de red) y número de casa (identificador de host). A su vez, la cabecera IPv4 es como la etiqueta de envío pegada al paquete: indica versión del formato, tamaño total, prioridad, límite de paradas permitidas (TTL) y qué departamento interno debe abrirlo al llegar (Protocolo).</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="card ova-card ova-card-concepto h-100">
+              <div class="card-header">
+                <i class="bi bi-cpu" aria-hidden="true"></i>
+                Concepto técnico
+              </div>
+              <div class="card-body">
+                <h3>Datagrama IPv4 (RFC 791) y espacio de 32 bits</h3>
+                <p class="mb-0">El protocolo <strong>IPv4</strong> utiliza direcciones lógicas de <strong>32 bits</strong> (4 octetos en notación decimal punteada, proporcionando $2^{32} \approx 4.29 \times 10^9$ direcciones) y antepone a cada segmento una cabecera estándar de <strong>20 bytes</strong> (5 palabras de 32 bits, ampliable hasta 60 bytes con opciones) que contiene toda la información necesaria para el reenvío y la fragmentación.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Diagrama interactivo de la cabecera IPv4 completa (5 palabras = 20 bytes) -->
+      <section class="mt-4" aria-labelledby="u3-cabecera-titulo">
+        <h2 id="u3-cabecera-titulo">Estructura de la cabecera IPv4 (20 bytes estándar)</h2>
+        <p>La cabecera IPv4 se organiza en filas de 32 bits (4 bytes por palabra). Haz clic sobre cualquiera de los 12 campos estándar para inspeccionar su tamaño en bits y su función exacta:</p>
+
+        <div class="ova-paquete mt-3" data-protocolo="ipv4">
+          <div class="ova-paquete-titulo">
+            <span>Cabecera IPv4 (RFC 791 / RFC 2474)</span>
+            <span>5 palabras × 32 bits = 20 bytes</span>
+          </div>
+          <div class="ova-regla" aria-hidden="true"><span>Bit 0</span><span>Bit 31</span></div>
+
+          <!-- Palabra 1: 4 + 4 + 6 + 2 + 16 = 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Primera palabra de la cabecera IPv4">
+            <div class="ova-campo" style="--bits: 4">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-version" aria-labelledby="u3-ipv4-version-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-version-nombre" for="u3-ipv4-version">Versión<small>4 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Versión (4 bits)</p>
+                <p>Vale <code>4</code> (<code>0100</code> en binario). Permite a los routers identificar que el datagrama sigue el formato IPv4 antes de interpretar el resto de los campos.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 4">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-ihl" aria-labelledby="u3-ipv4-ihl-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-ihl-nombre" for="u3-ipv4-ihl">IHL<small>4 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">IHL · Internet Header Length (4 bits)</p>
+                <p>Indica la longitud de la cabecera en palabras de 32 bits. El valor mínimo es <code>5</code> (20 bytes sin opciones) y el máximo es <code>15</code> (60 bytes).</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 6">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-dscp" aria-labelledby="u3-ipv4-dscp-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-dscp-nombre" for="u3-ipv4-dscp">DSCP<small>6 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">DSCP · Differentiated Services Code Point (6 bits)</p>
+                <p>Clasifica el tráfico para calidad de servicio (QoS), permitiendo priorizar paquetes sensibles al retardo como voz sobre IP o videoconferencia.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 2">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-ecn" aria-labelledby="u3-ipv4-ecn-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-ecn-nombre" for="u3-ipv4-ecn">ECN<small>2 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">ECN · Explicit Congestion Notification (2 bits)</p>
+                <p>Permite a los routers marcar el datagrama cuando detectan congestión incipiente en sus colas, avisando a los extremos sin descartar paquetes.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 16">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-longitud" aria-labelledby="u3-ipv4-longitud-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-longitud-nombre" for="u3-ipv4-longitud">Longitud total<small>16 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Longitud total (16 bits)</p>
+                <p>Tamaño total del datagrama IPv4 (cabecera más datos) expresado en bytes. Su límite teórico máximo es $2^{16} - 1 = 65.535$ bytes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabra 2: 16 + 3 + 13 = 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Segunda palabra de la cabecera IPv4">
+            <div class="ova-campo" style="--bits: 16">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-id" aria-labelledby="u3-ipv4-id-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-id-nombre" for="u3-ipv4-id">Identificación<small>16 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Identificación (16 bits)</p>
+                <p>Número único asignado por el origen a un datagrama; si el paquete se fragmenta al cruzar un enlace con MTU menor, todos los fragmentos comparten este mismo valor para poder reensamblarse en el destino.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 3">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-flags" aria-labelledby="u3-ipv4-flags-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-flags-nombre" for="u3-ipv4-flags">Flags<small>3 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Flags de fragmentación (3 bits)</p>
+                <p>Bit 0 reservado (0); bit 1 <strong>DF</strong> (<em>Don't Fragment</em>, prohíbe fragmentar); bit 2 <strong>MF</strong> (<em>More Fragments</em>, vale 1 en todos los fragmentos excepto el último).</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 13">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-offset" aria-labelledby="u3-ipv4-offset-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-offset-nombre" for="u3-ipv4-offset">Desplazamiento de fragmento<small>13 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Desplazamiento de fragmento · Fragment Offset (13 bits)</p>
+                <p>Indica la posición exacta (en bloques de 8 bytes) donde encaja la carga útil de este fragmento dentro del datagrama original.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabra 3: 8 + 8 + 16 = 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Tercera palabra de la cabecera IPv4">
+            <div class="ova-campo" style="--bits: 8">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-ttl" aria-labelledby="u3-ipv4-ttl-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-ttl-nombre" for="u3-ipv4-ttl">TTL<small>8 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">TTL · Time to Live (8 bits)</p>
+                <p>Contador máximo de saltos (hasta 255). Cada router lo reduce en 1; si llega a 0, el paquete se descarta para evitar bucles infinitos y se notifica con ICMP.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 8">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-proto" aria-labelledby="u3-ipv4-proto-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-proto-nombre" for="u3-ipv4-proto">Protocolo<small>8 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Protocolo superior (8 bits)</p>
+                <p>Identifica el protocolo encapsulado en los datos del datagrama: <code>1</code> = ICMP, <code>6</code> = TCP, <code>17</code> = UDP, <code>89</code> = OSPF.</p>
+              </div>
+            </div>
+            <div class="ova-campo" style="--bits: 16">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-checksum" aria-labelledby="u3-ipv4-checksum-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-checksum-nombre" for="u3-ipv4-checksum">Suma de comprobación<small>16 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Suma de comprobación de cabecera · Header Checksum (16 bits)</p>
+                <p>Detecta errores de bits únicamente en la cabecera IPv4. Debe recalcularse en cada router porque el campo TTL cambia en cada salto.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabra 4: 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Cuarta palabra de la cabecera IPv4">
+            <div class="ova-campo" style="--bits: 32">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-src" aria-labelledby="u3-ipv4-src-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-src-nombre" for="u3-ipv4-src">Dirección IP de origen<small>32 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Dirección IPv4 de origen (32 bits)</p>
+                <p>Identificador lógico de la interfaz emisora del datagrama. Permanece invariable de extremo a extremo salvo que intervenga un dispositivo con traducción NAT.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Palabra 5: 32 bits -->
+          <div class="ova-cabecera" role="radiogroup" aria-label="Quinta palabra de la cabecera IPv4">
+            <div class="ova-campo" style="--bits: 32">
+              <div class="ova-campo-hit">
+                <input class="ova-campo-input" type="radio" name="u3-ipv4" id="u3-ipv4-dst" aria-labelledby="u3-ipv4-dst-nombre">
+                <label class="ova-campo-vista" id="u3-ipv4-dst-nombre" for="u3-ipv4-dst">Dirección IP de destino<small>32 bits</small></label>
+              </div>
+              <div class="ova-campo-info" aria-live="polite">
+                <p class="ova-detalle-titulo">Dirección IPv4 de destino (32 bits)</p>
+                <p>Identificador lógico del receptor final. Es el campo clave que cada router compara contra su tabla de reenvío mediante <em>Longest Prefix Match</em>.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="ova-detalle-vacio"><i class="bi bi-hand-index-thumb" aria-hidden="true"></i> Selecciona cualquier campo de las 5 palabras de la cabecera IPv4 para ver su función.</p>
+        </div>
+      </section>
+
+      <!-- 3. Direccionamiento IPv4, CIDR y rangos especiales -->
+      <section class="mt-4" aria-labelledby="u3-direccionamiento-titulo">
+        <h2 id="u3-direccionamiento-titulo">Direccionamiento lógico, CIDR y bloques especiales</h2>
+        <p>Una dirección IPv4 de 32 bits se divide mediante la <strong>máscara de subred</strong> o notación <strong>CIDR</strong> (<em>Classless Inter-Domain Routing</em>, expresada como <code>a.b.c.d/x</code>) en dos porciones: los primeros $x$ bits identifican la <strong>red</strong> y los $32 - x$ bits restantes identifican al <strong>host</strong>. Para cualquier subred con $h$ bits de host, existen $2^h - 2$ direcciones utilizables (descontando la dirección de red con todos los bits de host en <code>0</code> y la de <em>broadcast</em> con todos en <code>1</code>).</p>
+
+        <div class="table-responsive ova-tabla">
+          <table class="table table-striped align-middle mb-0">
+            <caption class="visually-hidden">Bloques de direcciones IPv4 reservados y privados</caption>
+            <thead>
+              <tr>
+                <th scope="col">Tipo de bloque</th>
+                <th scope="col">Prefijo CIDR</th>
+                <th scope="col">Rango de direcciones</th>
+                <th scope="col">Uso en redes TCP/IP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Privado (RFC 1918 · Clase A)</th>
+                <td><code>10.0.0.0/8</code></td>
+                <td><code>10.0.0.0 – 10.255.255.255</code></td>
+                <td>Redes corporativas y campus de gran escala (requiere NAT para salir a Internet).</td>
+              </tr>
+              <tr>
+                <th scope="row">Privado (RFC 1918 · Clase B)</th>
+                <td><code>172.16.0.0/12</code></td>
+                <td><code>172.16.0.0 – 172.31.255.255</code></td>
+                <td>Subredes medianas, entornos virtualizados y redes institucionales.</td>
+              </tr>
+              <tr>
+                <th scope="row">Privado (RFC 1918 · Clase C)</th>
+                <td><code>192.168.0.0/16</code></td>
+                <td><code>192.168.0.0 – 192.168.255.255</code></td>
+                <td>Redes domésticas, laboratorios y oficinas pequeñas.</td>
+              </tr>
+              <tr>
+                <th scope="row">Bucle local (<em>Loopback</em>)</th>
+                <td><code>127.0.0.0/8</code></td>
+                <td><code>127.0.0.0 – 127.255.255.255</code></td>
+                <td>Pruebas internas de la pila TCP/IP en el mismo equipo (<code>127.0.0.1</code>).</td>
+              </tr>
+              <tr>
+                <th scope="row">Enlace local (APIPA)</th>
+                <td><code>169.254.0.0/16</code></td>
+                <td><code>169.254.0.0 – 169.254.255.255</code></td>
+                <td>Autoconfiguración automática cuando un host no recibe respuesta de un servidor DHCP.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 4. Recurso audiovisual -->
+      <section class="mt-4" aria-labelledby="u3-video-titulo">
+        <h2 id="u3-video-titulo">Recurso audiovisual de apoyo</h2>
+        <figure class="ova-video">
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/SHbBso63X38"
+                title="Estructura de la cabecera IPv4 y direccionamiento CIDR"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
+            <figcaption class="ova-video-cita">
+              <i class="bi bi-youtube" aria-hidden="true"></i>
+              <span>Gabriel Marcano (2017). <cite>Direccionamiento IPv4 y Subredes (Explicado)</cite>. YouTube. https://www.youtube.com/watch?v=SHbBso63X38</span>
+            </figcaption>
+          </figure>
+      </section>
+
+      <!-- 5. Cuestionario interactivo -->
+      <section class="mt-4" aria-labelledby="u3-quiz-titulo">
+        <h2 id="u3-quiz-titulo">Comprueba lo aprendido</h2>
+        <p>Responde las 5 preguntas sobre campos de la cabecera IPv4, direccionamiento privado y subredes CIDR para registrar esta unidad como <strong>Completada</strong>.</p>
+        <div data-ova-quiz="unidad3"></div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre unidades">
+        <a class="btn btn-outline-secondary" href="unidad2.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Anterior: Unidad 2</a>
+        <a class="btn ova-btn-confirmar" href="unidad4.html">Siguiente: Unidad 4 <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="../index.html">Inicio</a>
+        <a href="../retos.html">Retos</a>
+        <a href="../juegos.html">Juegos</a>
+        <a href="../evaluacion.html">Evaluación</a>
+        <a href="../creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/data/unidad3.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+</body>
+</html>

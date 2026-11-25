@@ -1,0 +1,422 @@
+.lab-page {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3.5rem;
+}
+
+.lab-hero {
+  margin-bottom: 1.75rem;
+}
+
+.lab-hero h1 {
+  margin: 0 0 0.4rem;
+}
+
+.lab-hero p {
+  margin: 0 0 1.25rem;
+  opacity: 0.85;
+}
+
+/* Pestañas */
+.lab-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.lab-tab {
+  padding: 0.65rem 1.1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lab-tab.is-active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #ffffff;
+}
+
+.lab-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.5rem;
+  color: #0f172a;
+}
+
+/* --- LAB 1 --- */
+.lab1-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.lab1-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lab1-field select,
+.lab1-field input {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.lab1-route-info {
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+}
+
+.lab1-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.lab1-actions button,
+.lab2-challenge-actions button,
+.lab3-challenge-actions button,
+.lab3-preset {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lab1-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.lab1-topology-card,
+.lab1-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #f8fafc;
+  min-width: 0;
+}
+
+.lab1-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.lab1-topology {
+  position: relative;
+  width: 100%;
+  min-height: 340px;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.lab1-nodes {
+  position: relative;
+  width: 700px;
+  height: 340px;
+  margin-top: -340px;
+  pointer-events: none;
+}
+
+.lab1-svg {
+  width: 700px;
+  height: 340px;
+  display: block;
+}
+
+.lab1-link line {
+  stroke: #94a3b8;
+  stroke-width: 3;
+}
+
+.lab1-link.is-best line {
+  stroke: #16a34a;
+  stroke-width: 4;
+}
+
+.lab1-link.is-down line {
+  stroke: #dc2626;
+  stroke-dasharray: 6 5;
+}
+
+.lab1-link.is-toggleable {
+  cursor: pointer;
+}
+
+.lab1-link text {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #334155;
+}
+
+.lab1-link.is-down text {
+  fill: #dc2626;
+}
+
+.lab1-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  padding: 0.4rem 0.65rem;
+  border-radius: 10px;
+  border: 2px solid #334155;
+  background: #ffffff;
+  text-align: center;
+  min-width: 78px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+  z-index: 2;
+}
+
+.lab1-node strong,
+.lab1-node small {
+  display: block;
+}
+
+.lab1-node small {
+  font-size: 0.72rem;
+  color: #475569;
+}
+
+.lab1-node.is-active-hop {
+  border-color: #1d4ed8;
+  background: #dbeafe;
+}
+
+.lab1-side-panels {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.lab1-card h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.lab1-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.lab1-table th,
+.lab1-table td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.lab1-table tr.is-winner {
+  background: #dcfce7;
+  font-weight: 600;
+}
+
+.lab1-log {
+  max-height: 190px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 0.84rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* --- LAB 2 --- */
+.lab2-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lab2-error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.lab2-binary-section {
+  margin: 1.25rem 0;
+}
+
+.lab2-bin-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.lab2-bin-label {
+  min-width: 145px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.lab2-bin-bits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.lab2-octet {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.lab2-bit {
+  padding: 0.15rem 0.25rem;
+  border-radius: 4px;
+}
+
+.lab2-bit.is-net-bit {
+  background: #dbeafe;
+  color: #1e40af;
+  font-weight: 700;
+}
+
+.lab2-bit.is-host-bit {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.lab2-results,
+.lab3-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.lab2-stat,
+.lab3-stat {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  background: #f8fafc;
+}
+
+.lab2-stat span,
+.lab3-stat span {
+  display: block;
+  font-size: 0.8rem;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+
+.lab2-stat strong,
+.lab3-stat strong {
+  font-size: 1.05rem;
+}
+
+.lab2-challenge,
+.lab3-challenge {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.lab2-challenge-actions,
+.lab3-challenge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.lab2-feedback,
+.lab3-feedback {
+  font-weight: 600;
+  min-height: 1.25rem;
+}
+
+/* --- LAB 3 --- */
+.lab3-octet-board {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(75px, 1fr));
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+
+.lab3-bit-col {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 0.65rem 0.4rem;
+  text-align: center;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.lab3-bit-col.is-one {
+  border-color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.lab3-bit-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #94a3b8;
+  background: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lab3-bit-col.is-one .lab3-bit-btn {
+  background: #1d4ed8;
+  color: #ffffff;
+  border-color: #1d4ed8;
+}
+
+.lab3-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.lab3-presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+@media (max-width: 1050px) {
+  .lab1-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
