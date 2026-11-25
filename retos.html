@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retos · OVA Capa de Internet del modelo TCP/IP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="./css/styles.css" rel="stylesheet">
+</head>
+<body data-page="retos">
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header class="ova-header">
+    <nav class="navbar navbar-expand-xl ova-navbar" data-bs-theme="dark" aria-label="Principal">
+      <div class="container-xl">
+        <a class="navbar-brand" href="./index.html">
+          <i class="bi bi-hdd-network" aria-hidden="true"></i>
+          <span>
+            <span class="ova-brand-titulo">Capa de Internet</span>
+            <span class="ova-brand-sub">TCP/IP · Telemática</span>
+          </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuOva" aria-controls="menuOva" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuOva">
+          <ul class="navbar-nav ms-lg-auto">
+            <li class="nav-item"><a class="nav-link" href="./index.html" data-nav="inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad1.html" data-nav="unidad1">Unidad 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad2.html" data-nav="unidad2">Unidad 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad3.html" data-nav="unidad3">Unidad 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad4.html" data-nav="unidad4">Unidad 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad5.html" data-nav="unidad5">Unidad 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/unidad6.html" data-nav="unidad6">Unidad 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="./retos.html" data-nav="retos">Retos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./juegos.html" data-nav="juegos">Juegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="./unidades/laboratorios.html" data-nav="laboratorios">Laboratorios</a></li>
+            <li class="nav-item"><a class="nav-link" href="./evaluacion.html" data-nav="evaluacion">Evaluación</a></li>
+            <li class="nav-item"><a class="nav-link" href="./creditos.html" data-nav="creditos">Créditos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="ova-nav-progreso">
+      <div class="container-xl">
+        <div class="ova-nav-progreso-fila">
+          <p class="ova-nav-progreso-texto">Recorrido <strong data-ova-unidades-visitadas>0</strong>/6</p>
+          <div class="progress ova-progreso" role="progressbar" aria-label="Unidades visitadas" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-ova-progreso>
+            <div class="progress-bar" data-ova-barra-progreso style="width: 0%"></div>
+          </div>
+          <ol class="ova-hops">
+            <li><a class="ova-hop" href="./unidades/unidad1.html" data-unidad="unidad1" aria-label="Unidad 1">1</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad2.html" data-unidad="unidad2" aria-label="Unidad 2">2</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad3.html" data-unidad="unidad3" aria-label="Unidad 3">3</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad4.html" data-unidad="unidad4" aria-label="Unidad 4">4</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad5.html" data-unidad="unidad5" aria-label="Unidad 5">5</a></li>
+            <li><a class="ova-hop" href="./unidades/unidad6.html" data-unidad="unidad6" aria-label="Unidad 6">6</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="ova-main" id="contenido">
+    <div class="container-xl">
+      <header class="ova-page-head">
+        <p class="ova-kicker">Actividad transversal · Práctica guiada</p>
+        <h1>Retos aplicados de la capa de Internet</h1>
+        <p class="lead mb-0">Resuelve estos cuatro escenarios de ingeniería de redes aplicando reenvío por prefijo más largo, subredes CIDR, compresión IPv6 y selección de rutas en OSPF/BGP.</p>
+      </header>
+
+      <div class="alert alert-light border d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4" role="status" aria-live="polite">
+        <span><i class="bi bi-trophy me-1" aria-hidden="true"></i> Progreso en esta sección: <strong id="retos-marcador">0 de 4 retos superados</strong></span>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="retos-reiniciar">Reiniciar retos</button>
+      </div>
+
+      <!-- RETO 1: Tabla de reenvío y Longest Prefix Match -->
+      <section class="card ova-card mb-4" aria-labelledby="reto1-titulo">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-router me-1" aria-hidden="true"></i> Reto 1 · Coincidencia de prefijo más largo (Longest Prefix Match)</span>
+          <span class="badge text-bg-secondary" id="reto1-estado">Pendiente</span>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="reto1-titulo">Decisión de reenvío en el plano de datos de un router</h2>
+          <p>Un router de borde consulta la siguiente tabla de reenvío para despachar tres datagramas entrantes. Selecciona la interfaz de salida correcta para cada paquete aplicando la regla de <strong>coincidencia de prefijo más largo</strong>:</p>
+
+          <div class="table-responsive ova-tabla mb-3">
+            <table class="table table-sm table-striped align-middle mb-0">
+              <caption class="visually-hidden">Tabla de reenvío IPv4 del router de borde</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Prefijo de red destino</th>
+                  <th scope="col">Rango cubierto</th>
+                  <th scope="col">Interfaz de salida</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>10.20.0.0/16</code></td>
+                  <td><code>10.20.0.0 – 10.20.255.255</code></td>
+                  <td><code>Eth0</code></td>
+                </tr>
+                <tr>
+                  <td><code>10.20.48.0/21</code></td>
+                  <td><code>10.20.48.0 – 10.20.55.255</code></td>
+                  <td><code>Eth1</code></td>
+                </tr>
+                <tr>
+                  <td><code>10.20.52.0/24</code></td>
+                  <td><code>10.20.52.0 – 10.20.52.255</code></td>
+                  <td><code>Eth2</code></td>
+                </tr>
+                <tr>
+                  <td><code>10.20.52.192/26</code></td>
+                  <td><code>10.20.52.192 – 10.20.52.255</code></td>
+                  <td><code>Eth3</code></td>
+                </tr>
+                <tr>
+                  <td><code>0.0.0.0/0</code> (Ruta por defecto)</td>
+                  <td>Cualquier dirección IPv4</td>
+                  <td><code>Serial0/0</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r1-p1">Paquete A · Destino <code>10.20.52.210</code></label>
+              <select class="form-select" id="r1-p1">
+                <option value="">Selecciona interfaz...</option>
+                <option value="Eth0">Eth0 (/16)</option>
+                <option value="Eth1">Eth1 (/21)</option>
+                <option value="Eth2">Eth2 (/24)</option>
+                <option value="Eth3">Eth3 (/26)</option>
+                <option value="Serial0/0">Serial0/0 (/0)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r1-p2">Paquete B · Destino <code>10.20.50.15</code></label>
+              <select class="form-select" id="r1-p2">
+                <option value="">Selecciona interfaz...</option>
+                <option value="Eth0">Eth0 (/16)</option>
+                <option value="Eth1">Eth1 (/21)</option>
+                <option value="Eth2">Eth2 (/24)</option>
+                <option value="Eth3">Eth3 (/26)</option>
+                <option value="Serial0/0">Serial0/0 (/0)</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r1-p3">Paquete C · Destino <code>172.31.8.4</code></label>
+              <select class="form-select" id="r1-p3">
+                <option value="">Selecciona interfaz...</option>
+                <option value="Eth0">Eth0 (/16)</option>
+                <option value="Eth1">Eth1 (/21)</option>
+                <option value="Eth2">Eth2 (/24)</option>
+                <option value="Eth3">Eth3 (/26)</option>
+                <option value="Serial0/0">Serial0/0 (/0)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button type="button" class="btn ova-btn-confirmar" id="btn-reto1">Verificar reenvío</button>
+          </div>
+          <div class="mt-3" id="fb-reto1" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- RETO 2: Auditoría de subred CIDR -->
+      <section class="card ova-card mb-4" aria-labelledby="reto2-titulo">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-diagram-2 me-1" aria-hidden="true"></i> Reto 2 · Planificación y auditoría IPv4 CIDR</span>
+          <span class="badge text-bg-secondary" id="reto2-estado">Pendiente</span>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="reto2-titulo">Análisis del bloque de subred <code>192.168.84.128/26</code></h2>
+          <p>El departamento de infraestructura asignó el prefijo <code>192.168.84.128/26</code> (máscara <code>255.255.255.192</code>) para una sala de servidores. Determina los parámetros válidos de la subred:</p>
+
+          <div class="row g-3">
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r2-q1">1. Dirección de difusión (broadcast)</label>
+              <select class="form-select" id="r2-q1">
+                <option value="">Selecciona opción...</option>
+                <option value="192.168.84.190">192.168.84.190</option>
+                <option value="192.168.84.191">192.168.84.191</option>
+                <option value="192.168.84.192">192.168.84.192</option>
+                <option value="192.168.84.255">192.168.84.255</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r2-q2">2. Total de hosts utilizables ($2^h - 2$)</label>
+              <select class="form-select" id="r2-q2">
+                <option value="">Selecciona opción...</option>
+                <option value="30">30 hosts</option>
+                <option value="62">62 hosts</option>
+                <option value="64">64 hosts</option>
+                <option value="126">126 hosts</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label class="form-label fw-semibold" for="r2-q3">3. Última IP asignable a un servidor</label>
+              <select class="form-select" id="r2-q3">
+                <option value="">Selecciona opción...</option>
+                <option value="192.168.84.189">192.168.84.189</option>
+                <option value="192.168.84.190">192.168.84.190</option>
+                <option value="192.168.84.191">192.168.84.191</option>
+                <option value="192.168.84.254">192.168.84.254</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button type="button" class="btn ova-btn-confirmar" id="btn-reto2">Validar parámetros CIDR</button>
+          </div>
+          <div class="mt-3" id="fb-reto2" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- RETO 3: Compresión canónica IPv6 -->
+      <section class="card ova-card mb-4" aria-labelledby="reto3-titulo">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-123 me-1" aria-hidden="true"></i> Reto 3 · Compresión canónica de direcciones IPv6 (RFC 5952)</span>
+          <span class="badge text-bg-secondary" id="reto3-estado">Pendiente</span>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="reto3-titulo">Abreviación estándar de direcciones de 128 bits</h2>
+          <p>Escribe la forma abreviada válida de cada dirección IPv6 aplicando supresión de ceros a la izquierda por hexteto y usando la doble coma (<code>::</code>) una única vez sobre la secuencia más larga de hextetos nulos:</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold" for="r3-ip1">Dirección 1: <code>2001:0db8:0000:0000:0a10:0000:0000:0001</code></label>
+              <input type="text" class="form-control font-monospace" id="r3-ip1" placeholder="Ej: 2001:db8::..." autocomplete="off">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold" for="r3-ip2">Dirección 2: <code>fe80:0000:0000:0000:020c:29ff:fe4a:00b3</code></label>
+              <input type="text" class="form-control font-monospace" id="r3-ip2" placeholder="Ej: fe80::..." autocomplete="off">
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button type="button" class="btn ova-btn-confirmar" id="btn-reto3">Comprobar formato IPv6</button>
+          </div>
+          <div class="mt-3" id="fb-reto3" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- RETO 4: Métricas OSPF vs RIP y filtrado BGP -->
+      <section class="card ova-card mb-4" aria-labelledby="reto4-titulo">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span><i class="bi bi-signpost-split me-1" aria-hidden="true"></i> Reto 4 · Selección de rutas IGP (RIP vs. OSPF) y políticas BGP</span>
+          <span class="badge text-bg-secondary" id="reto4-estado">Pendiente</span>
+        </div>
+        <div class="card-body">
+          <h2 class="h5" id="reto4-titulo">Comparación de decisiones de enrutamiento en producción</h2>
+          <p>Analiza los dos casos operativos y selecciona el comportamiento correcto de cada protocolo:</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label fw-semibold" for="r4-q1">1. Para alcanzar la red <code>10.50.0.0/16</code> existen dos caminos: <strong>Ruta A</strong> atraviesa dos enlaces de 100 Mbps (costo OSPF = 2, 2 saltos); <strong>Ruta B</strong> atraviesa un único enlace de 10 Mbps (costo OSPF = 10, 1 salto). ¿Qué ruta elige cada protocolo?</label>
+              <select class="form-select" id="r4-q1">
+                <option value="">Selecciona decisión...</option>
+                <option value="ambos-a">Tanto RIPv2 como OSPF eligen la Ruta A</option>
+                <option value="ambos-b">Tanto RIPv2 como OSPF eligen la Ruta B</option>
+                <option value="rip-b-ospf-a">RIPv2 elige la Ruta B (1 salto) y OSPF elige la Ruta A (menor costo = 2)</option>
+                <option value="rip-a-ospf-b">RIPv2 elige la Ruta A y OSPF elige la Ruta B</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label fw-semibold" for="r4-q2">2. El router frontera del Sistema Autónomo <code>AS 65100</code> recibe por eBGP una actualización para el prefijo <code>198.51.100.0/24</code> cuyo atributo es <code>AS-PATH: 65300 65100 65005</code>. ¿Qué hace el router?</label>
+              <select class="form-select" id="r4-q2">
+                <option value="">Selecciona acción BGP...</option>
+                <option value="acepta">Instala la ruta en la tabla BGP porque tiene solo 3 AS</option>
+                <option value="descarta">Descarta el anuncio porque detecta su propio ASN (65100) en el AS-PATH, evitando un bucle</option>
+                <option value="rip">Redistribuye el prefijo por UDP puerto 520 con métrica 16</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button type="button" class="btn ova-btn-confirmar" id="btn-reto4">Verificar diagnóstico</button>
+          </div>
+          <div class="mt-3" id="fb-reto4" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <nav class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top" aria-label="Navegación entre secciones">
+        <a class="btn btn-outline-secondary" href="./unidades/unidad6.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver a Unidad 6</a>
+        <a class="btn ova-btn-confirmar" href="./juegos.html">Continuar a Juegos <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="ova-footer">
+    <div class="container-xl">
+      <p class="ova-footer-institucion">Universidad de Córdoba · Programa de Ingeniería de Sistemas · Asignatura Telemática</p>
+      <p class="ova-footer-ova">OVA · Capa de Internet del modelo TCP/IP</p>
+      <p class="ova-footer-docente">Docente: Richard Crawford V.</p>
+      <p class="ova-footer-equipo">Jose Alcázar · Elizabeth Borja · Isaias Llorente</p>
+      <nav class="ova-footer-nav" aria-label="Pie de página">
+        <a href="./index.html">Inicio</a>
+        <a href="./retos.html">Retos</a>
+        <a href="./juegos.html">Juegos</a>
+        <a href="./evaluacion.html">Evaluación</a>
+        <a href="./creditos.html">Créditos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/app.js"></script>
+  <script>
+    (function () {
+      const STORAGE_KEY = 'ova-capa-internet-retos';
+      let estado = { r1: false, r2: false, r3: false, r4: false };
+
+      try {
+        const guardado = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (guardado && typeof guardado === 'object') {
+          estado = Object.assign(estado, guardado);
+        }
+      } catch (e) {}
+
+      function guardarEstado() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+        } catch (e) {}
+        actualizarMarcador();
+      }
+
+      function marcarBadge(idBadge, resuelto) {
+        const badge = document.getElementById(idBadge);
+        if (!badge) return;
+        if (resuelto) {
+          badge.className = 'badge text-bg-success';
+          badge.textContent = 'Superado';
+        } else {
+          badge.className = 'badge text-bg-secondary';
+          badge.textContent = 'Pendiente';
+        }
+      }
+
+      function actualizarMarcador() {
+        const total = Object.values(estado).filter(Boolean).length;
+        const marcador = document.getElementById('retos-marcador');
+        if (marcador) {
+          marcador.textContent = total + ' de 4 retos superados';
+        }
+        marcarBadge('reto1-estado', estado.r1);
+        marcarBadge('reto2-estado', estado.r2);
+        marcarBadge('reto3-estado', estado.r3);
+        marcarBadge('reto4-estado', estado.r4);
+      }
+
+      function mostrarAlerta(idContenedor, ok, htmlMensaje) {
+        const cont = document.getElementById(idContenedor);
+        if (!cont) return;
+        cont.innerHTML =
+          '<div class="alert ' + (ok ? 'alert-success' : 'alert-warning') + ' mb-0" role="alert">' +
+          htmlMensaje +
+          '</div>';
+      }
+
+      // Reto 1
+      document.getElementById('btn-reto1').addEventListener('click', function () {
+        const p1 = document.getElementById('r1-p1').value;
+        const p2 = document.getElementById('r1-p2').value;
+        const p3 = document.getElementById('r1-p3').value;
+
+        if (!p1 || !p2 || !p3) {
+          mostrarAlerta('fb-reto1', false, 'Selecciona una interfaz de salida para cada uno de los tres paquetes antes de verificar.');
+          return;
+        }
+
+        const ok = p1 === 'Eth3' && p2 === 'Eth1' && p3 === 'Serial0/0';
+        if (ok) {
+          estado.r1 = true;
+          guardarEstado();
+          mostrarAlerta(
+            'fb-reto1',
+            true,
+            '<strong>¡Excelente!</strong> <code>10.20.52.210</code> coincide con cuatro entradas (/16, /21, /24 y /26), pero gana <code>Eth3</code> por tener el prefijo más largo (/26). <code>10.20.50.15</code> entra en el bloque <code>10.20.48.0/21</code> (<code>Eth1</code>), y <code>172.31.8.4</code> usa la ruta por defecto <code>Serial0/0</code>.'
+          );
+        } else {
+          mostrarAlerta(
+            'fb-reto1',
+            false,
+            '<strong>Revisa los prefijos:</strong> recuerda que cuando varias rutas coinciden con la IP destino, el router siempre elige la máscara con mayor número de bits (<code>/26</code> es más específica que <code>/24</code>, <code>/21</code> o <code>/16</code>).'
+          );
+        }
+      });
+
+      // Reto 2
+      document.getElementById('btn-reto2').addEventListener('click', function () {
+        const q1 = document.getElementById('r2-q1').value;
+        const q2 = document.getElementById('r2-q2').value;
+        const q3 = document.getElementById('r2-q3').value;
+
+        if (!q1 || !q2 || !q3) {
+          mostrarAlerta('fb-reto2', false, 'Completa los tres campos de la auditoría CIDR antes de validar.');
+          return;
+        }
+
+        const ok = q1 === '192.168.84.191' && q2 === '62' && q3 === '192.168.84.190';
+        if (ok) {
+          estado.r2 = true;
+          guardarEstado();
+          mostrarAlerta(
+            'fb-reto2',
+            true,
+            '<strong>¡Correcto!</strong> Un prefijo <code>/26</code> deja $32 - 26 = 6$ bits de host ($2^6 = 64$ direcciones desde <code>.128</code> hasta <code>.191</code>). La dirección de red es <code>.128</code>, el broadcast es <code>.191</code> y los <strong>62 hosts útiles</strong> van de <code>.129</code> a <code>.190</code>.'
+          );
+        } else {
+          mostrarAlerta(
+            'fb-reto2',
+            false,
+            '<strong>Cálculo incompleto:</strong> con máscara <code>/26</code> (<code>.192</code> en el último octeto), el salto de bloque es $256 - 192 = 64$. Suma 64 a <code>128</code> para hallar dónde empieza la siguiente subred y resta 1 para obtener el broadcast.'
+          );
+        }
+      });
+
+      // Reto 3
+      document.getElementById('btn-reto3').addEventListener('click', function () {
+        const ip1 = document.getElementById('r3-ip1').value.trim().toLowerCase();
+        const ip2 = document.getElementById('r3-ip2').value.trim().toLowerCase();
+
+        if (!ip1 || !ip2) {
+          mostrarAlerta('fb-reto3', false, 'Escribe ambas direcciones IPv6 en formato abreviado antes de comprobar.');
+          return;
+        }
+
+        const ok1 = ip1 === '2001:db8::a10:0:0:1';
+        const ok2 = ip2 === 'fe80::20c:29ff:fe4a:b3';
+
+        if (ok1 && ok2) {
+          estado.r3 = true;
+          guardarEstado();
+          mostrarAlerta(
+            'fb-reto3',
+            true,
+            '<strong>¡Impecable!</strong> En la primera dirección existen dos bloques de dos hextetos en cero de igual longitud; el estándar RFC 5952 exige comprimir con <code>::</code> el primero de izquierda a derecha (<code>2001:db8::a10:0:0:1</code>) y nunca usar <code>::</code> dos veces. En la segunda se comprimen los tres hextetos nulos iniciales (<code>fe80::20c:29ff:fe4a:b3</code>).'
+          );
+        } else {
+          let pista = '<strong>Verifica las reglas RFC 5952:</strong> ';
+          if (!ok1) {
+            pista += 'En la Dirección 1 recuerda quitar los ceros a la izquierda (<code>0db8 → db8</code>, <code>0a10 → a10</code>, <code>0001 → 1</code>) y usar <code>::</code> solo en el primer grupo de ceros consecutivos, dejando los otros dos como <code>0:0</code>. ';
+          }
+          if (!ok2) {
+            pista += 'En la Dirección 2 comprime los tres grupos <code>0000</code> con <code>::</code> y elimina los ceros iniciales en <code>020c</code> y <code>00b3</code>.';
+          }
+          mostrarAlerta('fb-reto3', false, pista);
+        }
+      });
+
+      // Reto 4
+      document.getElementById('btn-reto4').addEventListener('click', function () {
+        const q1 = document.getElementById('r4-q1').value;
+        const q2 = document.getElementById('r4-q2').value;
+
+        if (!q1 || !q2) {
+          mostrarAlerta('fb-reto4', false, 'Selecciona una respuesta para ambos casos de enrutamiento.');
+          return;
+        }
+
+        const ok = q1 === 'rip-b-ospf-a' && q2 === 'descarta';
+        if (ok) {
+          estado.r4 = true;
+          guardarEstado();
+          mostrarAlerta(
+            'fb-reto4',
+            true,
+            '<strong>¡Exacto!</strong> RIPv2 solo cuenta saltos, por lo que prefiere la Ruta B (1 salto) aunque sea diez veces más lenta; OSPF evalúa el ancho de banda y elige la Ruta A (costo acumulado 2 frente a 10). En BGP, encontrar el propio ASN (<code>65100</code>) dentro del <code>AS-PATH</code> activa el rechazo inmediato del anuncio para evitar bucles inter-AS.'
+          );
+        } else {
+          mostrarAlerta(
+            'fb-reto4',
+            false,
+            '<strong>Revisa los criterios de cada protocolo:</strong> recuerda que RIPv2 ignora el ancho de banda (solo cuenta routers atravesados), mientras que BGP inspecciona el atributo <code>AS-PATH</code> para detectar si la ruta ya pasó por su propio Sistema Autónomo.'
+          );
+        }
+      });
+
+      document.getElementById('retos-reiniciar').addEventListener('click', function () {
+        estado = { r1: false, r2: false, r3: false, r4: false };
+        ['r1-p1', 'r1-p2', 'r1-p3', 'r2-q1', 'r2-q2', 'r2-q3', 'r4-q1', 'r4-q2'].forEach(function (id) {
+          document.getElementById(id).value = '';
+        });
+        document.getElementById('r3-ip1').value = '';
+        document.getElementById('r3-ip2').value = '';
+        ['fb-reto1', 'fb-reto2', 'fb-reto3', 'fb-reto4'].forEach(function (id) {
+          document.getElementById(id).innerHTML = '';
+        });
+        guardarEstado();
+      });
+
+      actualizarMarcador();
+    })();
+  </script>
+</body>
+</html>
